@@ -6,3 +6,4 @@
 1. Matrix opertions
 2. Python book examples
 3. ML features
+4. linear regression
