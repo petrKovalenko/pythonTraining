@@ -14,7 +14,9 @@ print( "115 % 3=",  115 % 3)
 #wait for input
 name = input("\n\nHВведи имя, смертный: ")
 print("Здорово," + name)
-
+#преобразование строкив число
+number = int(input("введи число: "))
+print("number + number", number + number)
 quote = "Три корабля лавировали, лавировали да не вылавировали"
 print("Цитата: " + quote)
 print("Цитата прописными: " + quote.upper())
