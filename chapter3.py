@@ -3,6 +3,10 @@
 import random
 
 userInput = 'n'
+#введение имени
+name = ""
+while not name:
+    name = input("Введите пожалуйста своё имя!")
 
 while(userInput.lower() != 'q'):
     dice1 = random.randint(1, 6)
@@ -12,13 +16,13 @@ while(userInput.lower() != 'q'):
     print("Второй бросок: ", dice2)
     print("Всего: ", total)
     if total > 10:
-        print("Очень удачный бросок!")
+        print("Очень удачный бросок, "+name+"!")
     elif total > 8:
-        print("Удачный бросок!")
+        print("Удачный бросок, "+name+"!")
     elif total > 6:
-        print("Нормальный бросок.")
+        print("Нормальный бросок, "+name+".")
     else:
-        print("Не очень удачный бросок :)")
+        print("Не очень удачный бросок, "+name+" :)")
     userInput = input("\n\nНажми q, чтобы выйти")
 
 
