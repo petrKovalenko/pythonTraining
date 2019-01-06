@@ -11,6 +11,10 @@ while(userInput.lower() != 'q'):
     print("Первый бросок: ", dice1)
     print("Второй бросок: ", dice2)
     print("Всего: ", total)
+    if total > 6:
+        print("Удачный бросок!")
+    else:
+        print("Не очень удачный бросок :)")
     userInput = input("\n\nНажми q, чтобы выйти")
 
 
