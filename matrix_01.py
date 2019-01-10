@@ -17,6 +17,19 @@ class Matrix(object):
             return -1
         for cur_row in self.rows:
             print(' '.join(cur_row))
+        return 0
+            
+    def insert_row(row_index, row_array):
+        if not row_index or row_index >= nOfRows:
+            print("No row in matrix with index: " + row_index)
+            return -1
+        if not row_array or len(row_array) < nOfCols:
+            print("Array of numbers is empty or too short")
+            return -1
+        if len(row_array) > nOfCols:
+            print("WARN: Row array is bigger than number of matrix columns - will be added only " + nOfCols + " elements!")
+        rows[row_index] = row_array[0:nOfCols] #Отсекаем, если ввели массив большей длины
+        return 0
 
 #Main Code
 
@@ -28,10 +41,16 @@ if rows_number > 0 and cols_number > 0:
         row_string = ""
         while not row_string:
             row_string = input("Введите " + cols_number + " элементов строки " + i + " разделённых одним пробелом")
-        row_array = row_string.split(" ")
-        if not row_array or len(row_array) < cols_number:
-            print("Количество элементов в строке меньше чем нужно. Выход.")
+        result = matrix.insert_row(i - 1, row_string.split(" "))
+        if result != 0
             break
+    matrix.print_matrix()
+else:
+    print("Количество строк и количество столбцов матрицы длолжны быть положительынми числами!")
+
+input("\n\nНажмите Enter для выхода")
+        
+        
         
         
         
