@@ -9,4 +9,6 @@ for j in range(1, 10):
 print("\n-------")
 for k in range(100, 0, -3):
     print(k, end=" ")
-    
+
+#Кортеж
+
