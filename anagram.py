@@ -24,18 +24,18 @@ while len(numbers) < t_w_len :
         index_rigth = index
         found = False
         while index_rigth < t_w_len:
-            index_rigth++            
+            index_rigth += 1            
             if not index_rigth in numbers:
                 found = True
                 break
         if not found:
             while index > 0:
-                index--
+                index -= 1
                 if not index in numbers:
                     break
-        else
+        else:
             index = index_rigth
-    numbers.push(index)
+    numbers.append(index)
 print("Number list:")
 print(numbers)
 
@@ -43,6 +43,14 @@ print(numbers)
 jumble = ""
 for num in numbers:
     jumble += word[num]
-print("ОТгадайте слово: " + jumble)
+print("Анаграмма: " + jumble)
+
+tries = 1;
+user_guess = input("Введите угаданное слово:")
+while user_guess != word and user_guess != "":
+    print("К сожадению, Вы неправы.")
+    tries += 1
+    user_guess = input("Введите угаданное слово:")
+print("Вы удадали, затратив ", tries, " попыток")
 
 input("\n\nНажмите Enter, чтобы выйти.")
