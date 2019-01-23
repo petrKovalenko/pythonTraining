@@ -33,6 +33,23 @@ class Matrix(object):
 - will be added only " + str(self.nOfCols) + " elements!")
         self.rows[row_index] = row_array[0:self.nOfCols] #Отсекаем, если ввели массив большей длины
         return 0
+    def transpone_matrix(self):
+        test_rows_link = self.rows
+        temp_cols = self.nOfCols
+        self.nOfCols = self.nOfRows
+        self.nOfRows = temp_cols
+        temp_rows = [None] * self.nOfRows
+        for i in range(0, self.nOfRows):
+            temp_rows[i] = [None] * self.nOfCols
+        for i in range(0, self.nOfCols):
+            for j in range(0, self.nOfRows):
+                temp_rows[j][i] = self.rows[i][j]
+        self.rows = temp_rows
+#Пытаемся подсчитать ссылки
+        print("Количество ссылок на предыдущий self.rows:")
+        print(sys.getrefcount(test_rows_link))
+        print("Количество ссылок на текущий self.rows:")
+        print(sys.getrefcount(self.rows))
 
 #Main Code
 
@@ -53,6 +70,9 @@ if rows_number > 0 and cols_number > 0:
             error = True
             break
     if not error:
+        matrix.print_matrix()        
+        matrix.transpone_matrix()
+        print("\nПосле транспонирования:\n")
         matrix.print_matrix()
 else:
     print("Количество строк и количество столбцов матрицы длолжны быть положительынми числами!")
