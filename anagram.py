@@ -48,7 +48,7 @@ print("Анаграмма: " + jumble)
 tries = 1;
 user_guess = input("Введите угаданное слово:")
 while user_guess != word and user_guess != "":
-    print("К сожадению, Вы неправы.")
+    print("К сожалению, Вы неправы.")
     tries += 1
     user_guess = input("Введите угаданное слово:")
 print("Вы удадали, затратив ", tries, " попыток")
