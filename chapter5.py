@@ -30,4 +30,8 @@ del arms_list[1]
 arms_list.append("Ухо варвара")
 print(arms_list)
 
+#распаковка
+knife, armour, item = arms_list
+print("And the item is:\t'" + item + "'")
+
 input("/n/nНажмите Enter чтобы выйти.")
