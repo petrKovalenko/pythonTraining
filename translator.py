@@ -29,15 +29,18 @@ while choice != '0':
         item_descr = input("Введите термин для истолкования:")
         print(trans.get(item_descr, "Такого понятия нет. Вы можете добавить его в словарь."))
     elif choice == "2":
-        item_key = input("Введите термин")
+        item_key = input("Введите термин")        
         if not item_key:
             print("Термин не модет быть пустым")
             continue
+        if item_key in  trans:
+            print("Термин уже существует!")
         item_val = input("Введите описание термина")
         if not item_val:
             print("Термин не может быть пустым")
             continue
-        trans
+        trans[item_key] = item_val
+        print("Термин " + item_val + "добавлен в словарь!")
 
 
 
