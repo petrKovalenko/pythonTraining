@@ -31,7 +31,7 @@ while choice != '0':
     elif choice == "2":
         item_key = input("Введите термин")        
         if not item_key:
-            print("Термин не модет быть пустым")
+            print("Термин не может быть пустым")
             continue
         if item_key in  trans:
             print("Термин уже существует!")
@@ -40,7 +40,28 @@ while choice != '0':
             print("Термин не может быть пустым")
             continue
         trans[item_key] = item_val
-        print("Термин " + item_val + "добавлен в словарь!")
+        print("Термин " + item_key + " добавлен в словарь!")
+    elif choice == "3":
+        item_key = input("Введите термин, у которого нужно изменить описание.")
+        if item_key in trans:
+            item_val = input("Введите описание термина")
+            if not item_val:
+                trans[item_key] = item_val
+                print("У термина " + item_key + " изменено описание: '" + item_val + "'" )
+            else:
+                print("Описание не может быть пустым")
+        else:            
+            print("Термина '" + item_key + "' нет в словаре!")
+    elif choice == "4":
+        item_key = input("Введите термин, который нужно удалить.")
+        if not item_key  in trans:
+            print("Термина '" + item_key + "' нет в словаре!")
+            continue
+        del trans[item_key]
+        print("Термин '" + item_key + "'удалён!")
+    elif choice == "5":
+        print(trans.keys())
+            
 
 
 
