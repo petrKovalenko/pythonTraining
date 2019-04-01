@@ -18,6 +18,9 @@ def instructions():
 # пример функции со множеством входов и множеством выходов
 def oneTwoOutputs(one, two):
     return two,one
+# функция с именоваными параметрами
+def iAmAlcoholic(firstMsg, name = "Михалыч", status = "шопоголик"):
+    print(firstMsg + " Меня зовут " + name + " и я " + status + ".")
 #main
 print("Инструкция к игре:")
 instructions()
@@ -26,6 +29,12 @@ second = input("\nВведите второе значение!")
 firstRet, secondRet = oneTwoOutputs(first, second)
 print("Первое значение:" + firstRet)
 print("Второе значение:" + secondRet)
+
+iAmAlcoholic("Здравствуйте!")
+iAmAlcoholic("Здорово", status = "алкоголик")
+iAmAlcoholic("Приветик", "Света", "нимфоманка")
+iAmAlcoholic("Хай!", name = "ЛСДУЗ")
+iAmAlcoholic("Добрый вечер", status = "трудоголик", name ="Гоша")
 input("\n\n Нажмите Enter чтобы выйти!")
 
     
