@@ -1,4 +1,12 @@
 #крестики нолики
+#глобальные константы
+CROSS = "X"
+ZERO = "0"
+EMPTY = " "
+TIE = "Ничья"
+NUM_SQUARES = 9
+
+#возвращает инструкцию
 def instructions():
     """ Выводит на экран инструкцию для игрока """
     print(
@@ -14,3 +22,16 @@ def instructions():
     Да начнётся игра!\n
     """
     )
+#спрашивает вопрос, дожидаясь ответа y или n
+#возвращает y или n
+def ask_yes_no(question):
+    answer = input(question)
+    while answer:
+        if answer.lower() == "y"  or answer.lower() == "да" :
+            return "y"
+        if answer.lower() == "n"  or answer.lower() == "нет" :
+            return "n"
+        print("Ответ должен быть y,Y,да или n,N,нет")
+        answer = input(question)
+
+    
