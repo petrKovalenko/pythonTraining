@@ -4,7 +4,8 @@ import tic_tac_toe
 #определяем константами, какие функции тестить
 TEST_INSTRUCT = 0
 TEST_ASK_Y_N = 0
-TEST_ASK_NUM = 1
+TEST_ASK_NUM = 0
+TEST_IS_FIRST_TURN = 1
 
 if TEST_INSTRUCT == 1:
     print("Тест функции tic_tac_toe.instructions")
@@ -19,5 +20,11 @@ if TEST_ASK_NUM == 1:
     print("Тест функции tic_tac_toe.ask_number")
     number = tic_tac_toe.ask_number("Введите чисто от -1 до 15", low = -1, high = 15)
     print("В итоге Вы ввели: " + str(number))
+
+if TEST_IS_FIRST_TURN == 1:
+    print("Тест функции tic_tac_toe.first_turn")
+    userSign,computerSign = tic_tac_toe.first_turn()
+    print("Пользовательский знак: " + userSign)
+    print("Знак компьютера: " + computerSign)
 
 input("/n/n Нажмите Enter, чтобы выйти!")
