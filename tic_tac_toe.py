@@ -1,4 +1,7 @@
 #крестики нолики
+#импорт
+import random
+
 #глобальные константы
 CROSS = "X"
 ZERO = "0"
@@ -53,6 +56,17 @@ def ask_number(question, low = 0, high = 8):
         print("Введите число от " + str(low) + " до " + str(high) + " включительно.")
         num = intParser(input(question))
     return num
+
+#Определяет случайно, кто первый ходит, человке или компьютер,
+#и возвращает сответсвующие фишки обоим сторонам. У кого крестик, тот и первый.
+#первый вывод - фишка пользователя, второй - компьютера
+def first_turn():
+    if(random.randint(1, 2) == 1):
+        print("Право первого хода - у Вас.")
+        return CROSS, ZERO
+    else:
+        print("право первого хода - у компьютера.")
+        return ZERO,CROSS
 
     
 
