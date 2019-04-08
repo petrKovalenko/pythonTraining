@@ -68,6 +68,20 @@ def first_turn():
         print("право первого хода - у компьютера.")
         return ZERO,CROSS
 
+#создаёт и возвращает список из элементов с пустыми занчениями,
+#представляющий из себя игровую доску
+def new_board():
+    return [EMPTY] * NUM_SQUARES
+
+#выводит доску на экран
+def display_board(board):
+    if board is None or len(board) < 9:
+        print("При передачи параметра доски произошла ошибка!")
+        return None
+    for i in range(0, 3):
+        print("\t" + board[3*i] + " | " + board[3*i+1] + " | " + board[3*i+2])
+
+
     
 
 
