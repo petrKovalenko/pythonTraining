@@ -5,7 +5,9 @@ import tic_tac_toe
 TEST_INSTRUCT = 0
 TEST_ASK_Y_N = 0
 TEST_ASK_NUM = 0
-TEST_IS_FIRST_TURN = 1
+TEST_IS_FIRST_TURN = 0
+TEST_NEWBOARD = 1
+TEST_DISPLAYBOARD = 1
 
 if TEST_INSTRUCT == 1:
     print("Тест функции tic_tac_toe.instructions")
@@ -26,5 +28,18 @@ if TEST_IS_FIRST_TURN == 1:
     userSign,computerSign = tic_tac_toe.first_turn()
     print("Пользовательский знак: " + userSign)
     print("Знак компьютера: " + computerSign)
+
+if TEST_NEWBOARD == 1:
+    print("Тест функции tic_tac_toe.new_board")
+    newBoardList = tic_tac_toe.new_board()
+    print("Пользовательский знак: " + str(newBoardList))
+
+if TEST_DISPLAYBOARD == 1:
+    print("Тест функции tic_tac_toe.display_board")
+    tic_tac_toe.display_board([tic_tac_toe.CROSS, tic_tac_toe.ZERO, tic_tac_toe.EMPTY,
+                                              tic_tac_toe.CROSS, tic_tac_toe.CROSS, tic_tac_toe.ZERO,
+                                              tic_tac_toe.EMPTY, tic_tac_toe.ZERO, tic_tac_toe.CROSS])
+    tic_tac_toe.display_board([tic_tac_toe.CROSS])
+    tic_tac_toe.display_board(None)
 
 input("/n/n Нажмите Enter, чтобы выйти!")
