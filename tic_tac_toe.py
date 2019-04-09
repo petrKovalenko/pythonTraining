@@ -7,7 +7,9 @@ CROSS = "X"
 ZERO = "0"
 EMPTY = " "
 TIE = "Ничья"
-NUM_SQUARES = 9
+SQUARE_STEP = 3
+NUM_SQUARES = SQUARE_STEP * SQUARE_STEP
+
 
 #функция пытается преобразовать аргумент в int, если не может - возвращает null
 def intParser(num):
@@ -94,6 +96,65 @@ def legal_moves(board):
         if(board[i] == EMPTY):
            availableMoves.append(i)
     return availableMoves
+
+#определяет победителя, и возвращает фишук победителя
+#если ничья - возвращает TIE
+#если не все клетки заполнены - возвращает None
+def winner(board):
+    if board is None:
+        print("При передачи параметра доски произошла ошибка - доска пуста!")
+        return None
+    if len(board) != NUM_SQUARES:
+        print("При передачи параметра доски произошла ошибка - доска не той длины!")
+        return None
+    #победитель по горизонтали
+    for i in range(0, SQUARE_STEP):
+        if board[i*SQUARE_STEP] == EMPTY:
+            continue
+        winning = True
+        for j in range(1, SQUARE_STEP):
+            if board[i*SQUARE_STEP] != board[i*SQUARE_STEP + j]:
+                winning = False
+                break
+        if winning:
+            return board[i*SQUARE_STEP]
+    #победитель по вертикали
+    for i in range(0, SQUARE_STEP):
+        if board[i] == EMPTY:
+            continue
+        winning = True
+        for j in range(1, SQUARE_STEP):
+            if board[i] != board[i + j*SQUARE_STEP]:
+                winning = False
+                break
+        if winning:
+            return board[i]
+    #победитель по диагонали
+    if board[0] != EMPTY:
+        winning = True
+        for i in range(1, SQUARE_STEP):
+            if board[0] != board[i * (SQUARE_STEP + 1)]:
+                winning = False
+                break
+        if winning:
+            return board[0]
+    if board[SQUARE_STEP -1] != EMPTY:
+        winning = True
+        for i in range(1, SQUARE_STEP):
+            if board[SQUARE_STEP -1] != board[(i + 1) * (SQUARE_STEP - 1)]:
+                winning = False
+                break
+        if winning:
+            return board[SQUARE_STEP -1]
+    #если нет победителя, смотрим, остались ли пустые клетки
+    #если пустых клеток не остальосб - тогда ничья
+    for i in range(0,NUM_SQUARES):
+        if board[i] == EMPTY:
+            return None
+    return TIE
+
+
+            
 
 
 
