@@ -14,8 +14,9 @@ TEST_ASK_Y_N = 0
 TEST_ASK_NUM = 0
 TEST_IS_FIRST_TURN = 0
 TEST_NEWBOARD = 0
-TEST_DISPLAYBOARD = 1
-TEST_LEGEL_MOVES = 1
+TEST_DISPLAYBOARD = 0
+TEST_LEGEL_MOVES = 0
+TEST_WINNING = 1
 
 if TEST_INSTRUCT == 1:
     print("Тест функции tic_tac_toe.instructions")
@@ -57,5 +58,12 @@ if TEST_LEGEL_MOVES == 1:
     legalMovesList = tic_tac_toe.legal_moves(None)
     legalMovesList = tic_tac_toe.legal_moves([tic_tac_toe.CROSS])
     legalMovesList = tic_tac_toe.legal_moves(["","","","","","","","","","","","","","","","","","","","",""])
+
+if TEST_WINNING == 1:
+    print("Тест функции tic_tac_toe.winner")
+    isWinning1 = tic_tac_toe.winner(BOARD_ONE)
+    print("Выигрыш: " + isWinning1)
+    isWinning2 = tic_tac_toe.winner(BOARD_TWO)
+    print("Выигрыш: " + isWinning2)
     
 input("/n/n Нажмите Enter, чтобы выйти!")
