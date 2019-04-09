@@ -75,11 +75,26 @@ def new_board():
 
 #выводит доску на экран
 def display_board(board):
-    if board is None or len(board) < 9:
+    if board is None or len(board) < NUM_SQUARES:
         print("При передачи параметра доски произошла ошибка!")
         return None
     for i in range(0, 3):
         print("\t" + board[3*i] + " | " + board[3*i+1] + " | " + board[3*i+2])
+
+#принимает на вход доску, возвращает список доступных ходов
+def legal_moves(board):
+    if board is None:
+        print("При передачи параметра доски произошла ошибка - доска пуста!")
+        return None
+    if len(board) != NUM_SQUARES:
+        print("При передачи параметра доски произошла ошибка - доска не той длины!")
+        return None
+    availableMoves = []
+    for i in range(0,NUM_SQUARES):
+        if(board[i] == EMPTY):
+           availableMoves.append(i)
+    return availableMoves
+
 
 
     
