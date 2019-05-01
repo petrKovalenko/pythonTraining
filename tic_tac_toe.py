@@ -1,6 +1,7 @@
 #крестики нолики
 #импорт
 import random
+#import sys
 
 #глобальные константы
 CROSS = "X"
@@ -9,7 +10,10 @@ EMPTY = " "
 TIE = "Ничья"
 SQUARE_STEP = 3
 NUM_SQUARES = SQUARE_STEP * SQUARE_STEP
-
+WINNING_SEQ = "PW"
+DANGEROUS_SEQ = "PD"
+USELESS_SEQ = "US"
+UNCLASSIFIED_SEQ = "UN"
 
 #функция пытается преобразовать аргумент в int, если не может - возвращает null
 def intParser(num):
@@ -35,6 +39,19 @@ def instructions():
     Да начнётся игра!\n
     """
     )
+#возвращает памятку по клеткам    
+def short_instructions():
+    print(
+    """
+    Числа соответсвуют полям, как показано а рисунке ниже.
+    0 | 1 | 2
+    ---------
+    3 | 4 | 5
+    ---------
+    6 | 7 | 8\n
+    """
+    )
+
 #спрашивает вопрос, дожидаясь ответа y или n
 #возвращает y или n
 def ask_yes_no(question):
@@ -153,12 +170,86 @@ def winner(board):
             return None
     return TIE
 
+#принимает на вход доску и типфишк игрока
+#возвращает доску, на которой сделан ход игрока
+def human_move(board, human):
+    #выводит памятку
+    short_instructions()
+    while True:
+    #спрашивает у игрока номер, куда походить
+        human_input = ask_number("Введите число, которое соответсвует клетке, куда вы хотите пойти.", 0, NUM_SQUARES - 1)
+        #если игрок выбрал не занятую клетку, возвращаем обновлённую доску, иначе - спрашиваем опять
+        if board[human_input] == EMPTY:
+            board[human_input] = human
+            return board
+        print("Вы выбрали уже занятую клетку. Пожалуйста, выберите пустую клетку")
 
-            
+#вспомогательная функция для функции computer_move
+#классифицирует последовательности на выигрышные, опасные, безполезные (нельзя не проиграть не победить)
+#принимает на вход последовательность, её длину, ходы компьютера и человека
+#возвращает тип строки - WINNING_SEQ, DANGEROUS_SEQ, USELESS_SEQ, UNCLASSIFIED_SEQ
+def classify_sequnce(seq, seq_len, computer, human):
+    computer_signs = 0
+    human_signs = 0
+    for i in range(0, seq_len):
+        if seq[i] == computer:
+            computer_signs+=1
+        if seq[i] == human:
+            human_signs+=1
+    #предвыигрышная ситуация
+    if computer_signs == SQUARE_STEP - 1:
+        return WINNING_SEQ
+    #опасная ситуация
+    if human_signs == SQUARE_STEP - 1:
+        return DANGEROUS_SEQ
+    #безполезная строка
+    if computer_signs > 0 and human_signs > 0:
+        return USELESS_SEQ
+    return UNCLASSIFIED_SEQ
 
+#вспомогательная функция для функции computer_move
+#принимает на вход доску, индекс пустого символа, результат классификации и символ хода компьютера
+#возвращает доску с ходом, или None в случае если это не победа. В случае изьяна в логике возвращает AssertionError
+def winning_move(board, empty_index, class_result, computer):
+    if class_result == WINNING_SEQ:
+        assert (empty_index >= 0), "Произошла ошибка в логике - empty_index равен " + str(empty_index) + " при результате классификации WINNING_SEQ"
+        board[empty_index] = computer
+        print("Компьютер походил в клетку " + str(empty_index))
+        return board
+    return None
 
+#вспомогательная функция для функции computer_move
+#принимает на вход dangerous_indicies, индекс пустого символа, результат классификации и символ хода компьютера
+#возвращает dangerous_indicies, или None в случае если это не победа. В случае изьяна в логике возвращает AssertionError
+def dangerous_move(dangerous_indicies, empty_index, class_result):
+    if class_result == DANGEROUS_SEQ:
+        assert (empty_index >= 0), "Произошла ошибка в логике - empty_index равен " + str(empty_index) + " при результате классификации DANGEROUS_SEQ"
+        if not str(empty_index) in dangerous_indicies:
+            dangerous_indicies[str(empty_index)] = 1       
+    return dangerous_indicies
 
-    
+#принимает на вход доску, тип фишек игрока и компьютера
+#возвращает доску, на которой сделан ход компьютера
+def computer_move(board, computer, human):
+    #plan
+    #классифицируем все строки и диагональ
+    #если можем выиграть где-то - выигрываем
+    #если опасная ситуация - перекрываем проходы
+    #если центр свободен - занимаем центр
+    #если опасности нет и центр занят ходим в любую точку, где есть шанс победить
 
-
-    
+    #если есть опасная ситуация, складываем сюда индексы, которые нужно заполнить для избежания опасной ситуации - победы игрока
+    dangerous_indicies = {}
+    #главная диагональ
+    sequence = []
+    empty_index = -1
+    for i in range(0, SQUARE_STEP):
+        sequence[i] = board[i + SQUARE_STEP*i]
+        if sequence[i] == EMPTY:
+            empty_index = i
+    class_result = classify_sequnce(sequence, SQUARE_STEP, computer, human)
+    win_brd = winning_move(board, empty_index, class_result, computer)
+    if win_brd:
+        return win_brd    
+    dangerous_move(dangerous_indicies, empty_index, class_result)
+        
