@@ -240,16 +240,46 @@ def computer_move(board, computer, human):
 
     #если есть опасная ситуация, складываем сюда индексы, которые нужно заполнить для избежания опасной ситуации - победы игрока
     dangerous_indicies = {}
-    #главная диагональ
+    #главная диагональ md
     sequence = []
     empty_index = -1
     for i in range(0, SQUARE_STEP):
         sequence[i] = board[i + SQUARE_STEP*i]
         if sequence[i] == EMPTY:
             empty_index = i
-    class_result = classify_sequnce(sequence, SQUARE_STEP, computer, human)
-    win_brd = winning_move(board, empty_index, class_result, computer)
+    class_result_md = classify_sequnce(sequence, SQUARE_STEP, computer, human)
+    win_brd = winning_move(board, empty_index, class_result_md, computer)
     if win_brd:
         return win_brd    
-    dangerous_move(dangerous_indicies, empty_index, class_result)
+    dangerous_indicies = dangerous_move(dangerous_indicies, empty_index, class_result_md)
+
+    #обратная диагональ rd
+    sequence = []
+    empty_index = -1
+    for i in range(0, SQUARE_STEP):
+        sequence[i] = board[(i + 1) * (SQUARE_STEP - 1)]
+        if sequence[i] == EMPTY:
+            empty_index = i
+    class_result_rd = classify_sequnce(sequence, SQUARE_STEP, computer, human)
+    win_brd = winning_move(board, empty_index, class_result_rd, computer)
+    if win_brd:
+        return win_brd    
+    dangerous_indicies = dangerous_move(dangerous_indicies, empty_index, class_result_rd)
+
+    #строки
+    class_result_rows = []*SQUARE_STEP
+    for j in range(0, SQUARE_STEP):
+        sequence = []
+        empty_index = -1
+        for i in range(0, SQUARE_STEP):
+            sequence[i] = board[SQUARE_STEP*j + i]
+            if sequence[i] == EMPTY:
+                empty_index = i
+        class_result_rows[j] = classify_sequnce(sequence, SQUARE_STEP, computer, human)
+        win_brd = winning_move(board, empty_index, class_result_rows[j], computer)
+        if win_brd:
+            return win_brd    
+        dangerous_indicies = dangerous_move(dangerous_indicies, empty_index, class_result_rows[j])
+
+    #столбцы
         
