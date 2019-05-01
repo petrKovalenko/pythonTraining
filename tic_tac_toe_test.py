@@ -2,12 +2,47 @@
 
 import tic_tac_toe
 #примеры досок
+#выигрыш по диагонали
 BOARD_ONE = [tic_tac_toe.CROSS, tic_tac_toe.ZERO, tic_tac_toe.EMPTY,
                                               tic_tac_toe.CROSS, tic_tac_toe.CROSS, tic_tac_toe.ZERO,
                                               tic_tac_toe.EMPTY, tic_tac_toe.ZERO, tic_tac_toe.CROSS]
+#нет выигрыша
 BOARD_TWO = [tic_tac_toe.ZERO, tic_tac_toe.ZERO, tic_tac_toe.EMPTY,
                                               tic_tac_toe.EMPTY, tic_tac_toe.CROSS, tic_tac_toe.ZERO,
                                               tic_tac_toe.CROSS, tic_tac_toe.ZERO, tic_tac_toe.CROSS]
+#выигрыш по обратной диагонали
+BOARD_THREE = [tic_tac_toe.EMPTY, tic_tac_toe.ZERO, tic_tac_toe.ZERO,
+                                              tic_tac_toe.CROSS, tic_tac_toe.ZERO, tic_tac_toe.ZERO,
+                                              tic_tac_toe.ZERO, tic_tac_toe.ZERO, tic_tac_toe.CROSS]
+#win upper row
+BOARD_FOUR = [tic_tac_toe.CROSS, tic_tac_toe.CROSS, tic_tac_toe.CROSS,
+                                              tic_tac_toe.EMPTY, tic_tac_toe.CROSS, tic_tac_toe.ZERO,
+                                              tic_tac_toe.CROSS, tic_tac_toe.ZERO, tic_tac_toe.CROSS]
+#win middle row
+BOARD_FIVE = [tic_tac_toe.ZERO, tic_tac_toe.ZERO, tic_tac_toe.EMPTY,
+                                              tic_tac_toe.ZERO, tic_tac_toe.ZERO, tic_tac_toe.ZERO,
+                                              tic_tac_toe.CROSS, tic_tac_toe.ZERO, tic_tac_toe.CROSS]
+#win bottom row
+BOARD_SIX = [tic_tac_toe.ZERO, tic_tac_toe.ZERO, tic_tac_toe.EMPTY,
+                                              tic_tac_toe.EMPTY, tic_tac_toe.CROSS, tic_tac_toe.ZERO,
+                                              tic_tac_toe.CROSS, tic_tac_toe.CROSS, tic_tac_toe.CROSS]
+#win left column
+BOARD_SEVEN = [tic_tac_toe.ZERO, tic_tac_toe.ZERO, tic_tac_toe.EMPTY,
+                                              tic_tac_toe.ZERO, tic_tac_toe.CROSS, tic_tac_toe.ZERO,
+                                              tic_tac_toe.ZERO, tic_tac_toe.ZERO, tic_tac_toe.CROSS]
+#win middle column
+BOARD_EIGHT = [tic_tac_toe.ZERO, tic_tac_toe.CROSS, tic_tac_toe.CROSS,
+                                              tic_tac_toe.EMPTY, tic_tac_toe.CROSS, tic_tac_toe.ZERO,
+                                              tic_tac_toe.EMPTY, tic_tac_toe.CROSS, tic_tac_toe.CROSS]
+#win right column
+BOARD_NINE = [tic_tac_toe.ZERO, tic_tac_toe.ZERO, tic_tac_toe.CROSS,
+                                              tic_tac_toe.EMPTY, tic_tac_toe.CROSS, tic_tac_toe.CROSS,
+                                              tic_tac_toe.EMPTY, tic_tac_toe.ZERO, tic_tac_toe.CROSS]
+#ничья!
+BOARD_TIE = [tic_tac_toe.ZERO, tic_tac_toe.CROSS, tic_tac_toe.ZERO,
+                                              tic_tac_toe.ZERO, tic_tac_toe.CROSS, tic_tac_toe.CROSS,
+                                              tic_tac_toe.CROSS, tic_tac_toe.ZERO, tic_tac_toe.CROSS]
+
 #определяем константами, какие функции тестить
 TEST_INSTRUCT = 0
 TEST_ASK_Y_N = 0
@@ -16,7 +51,8 @@ TEST_IS_FIRST_TURN = 0
 TEST_NEWBOARD = 0
 TEST_DISPLAYBOARD = 0
 TEST_LEGEL_MOVES = 0
-TEST_WINNING = 1
+TEST_WINNING = 0
+TEST_HUMAN_MOVE = 0
 
 if TEST_INSTRUCT == 1:
     print("Тест функции tic_tac_toe.instructions")
@@ -61,9 +97,60 @@ if TEST_LEGEL_MOVES == 1:
 
 if TEST_WINNING == 1:
     print("Тест функции tic_tac_toe.winner")
+    tic_tac_toe.display_board(BOARD_ONE)
     isWinning1 = tic_tac_toe.winner(BOARD_ONE)
     print("Выигрыш: " + isWinning1)
+
+    tic_tac_toe.display_board(BOARD_TWO)
     isWinning2 = tic_tac_toe.winner(BOARD_TWO)
+    if not isWinning2:
+        isWinning2 = "Нет выигрыша"
     print("Выигрыш: " + isWinning2)
+
+    tic_tac_toe.display_board(BOARD_THREE)
+    isWinning2 = tic_tac_toe.winner(BOARD_THREE)
+    print("Выигрыш: " + isWinning2)
+
+    tic_tac_toe.display_board(BOARD_FOUR)
+    isWinning2 = tic_tac_toe.winner(BOARD_FOUR)
+    print("Выигрыш: " + isWinning2)
+
+    tic_tac_toe.display_board(BOARD_FIVE)
+    isWinning2 = tic_tac_toe.winner(BOARD_FIVE)
+    print("Выигрыш: " + isWinning2)
+
+    tic_tac_toe.display_board(BOARD_SIX)
+    isWinning2 = tic_tac_toe.winner(BOARD_SIX)
+    print("Выигрыш: " + isWinning2)
+
+    tic_tac_toe.display_board(BOARD_SEVEN)
+    isWinning2 = tic_tac_toe.winner(BOARD_SEVEN)
+    print("Выигрыш: " + isWinning2)
+
+    tic_tac_toe.display_board(BOARD_EIGHT)
+    isWinning2 = tic_tac_toe.winner(BOARD_EIGHT)
+    print("Выигрыш: " + isWinning2)
+
+    tic_tac_toe.display_board(BOARD_NINE)
+    isWinning2 = tic_tac_toe.winner(BOARD_NINE)
+    print("Выигрыш: " + isWinning2)
+
+    tic_tac_toe.display_board(BOARD_TIE)
+    isWinning2 = tic_tac_toe.winner(BOARD_TIE)
+    print("Выигрыш: " + isWinning2)
+    
+
+if TEST_HUMAN_MOVE == 1:
+    print("Тест функции tic_tac_toe.human_move на первой доске")
+    tic_tac_toe.display_board(BOARD_ONE)
+    newboard = tic_tac_toe.human_move(BOARD_ONE, tic_tac_toe.CROSS)
+    print("Доска полсе хода игрока")
+    tic_tac_toe.display_board(newboard)
+
+    print("Тест функции tic_tac_toe.human_move на второй доске")
+    tic_tac_toe.display_board(BOARD_TWO)
+    newboard = tic_tac_toe.human_move(BOARD_TWO, tic_tac_toe.ZERO)
+    print("Доска полсе хода игрока")
+    tic_tac_toe.display_board(newboard)
     
 input("/n/n Нажмите Enter, чтобы выйти!")
