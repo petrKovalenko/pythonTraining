@@ -303,6 +303,7 @@ def computer_move(board, computer, human):
         return board
 
     #проверяем маршруты, по которым стоит 'ходить'. Предпочтение - в центр
+    #главная диагональ
     if class_result_md == UNCLASSIFIED_SEQ:
         #если нечётное число клеток квадарта - то предпочтение в центр
         if SQUARE_STEP % 2 == 1:
@@ -310,14 +311,26 @@ def computer_move(board, computer, human):
                 board[(NUM_SQUARES // 2)] = computer
                 return board
         #если чётное - то один из центральных диагональных квадратов
-        else
+        else:
             if board[ ((SQUARE_STEP // 2) - 1) * (SQUARE_STEP + 1)  ] == EMPTY:
                 board[ ((SQUARE_STEP // 2) - 1) * (SQUARE_STEP + 1)  ] = computer
                 return board
             if board[ ((SQUARE_STEP // 2) + 1) * (SQUARE_STEP + 1)  ] == EMPTY:
                 board[ ((SQUARE_STEP // 2) + 1) * (SQUARE_STEP + 1)  ] = computer
                 return board
-        
-            
-
+    #обртаная диагональ    
+    if class_result_rd == UNCLASSIFIED_SEQ:  
+        if SQUARE_STEP % 2 == 1:
+            if board[(NUM_SQUARES // 2)] == EMPTY:
+                board[(NUM_SQUARES // 2)] = computer
+                return board
+        else:
+            if board[ ((SQUARE_STEP // 2) - 1) * (SQUARE_STEP + 1) + 1] == EMPTY:
+                board[ ((SQUARE_STEP // 2) - 1) * (SQUARE_STEP + 1) + 1] = computer
+                return board
+            if board[ ((SQUARE_STEP // 2) + 1) * (SQUARE_STEP + 1) -  1] == EMPTY:
+                board[ ((SQUARE_STEP // 2) + 1) * (SQUARE_STEP + 1) - 1] = computer
+                return board
+    #строки и столбцы
+    
     
