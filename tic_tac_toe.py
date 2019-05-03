@@ -282,4 +282,18 @@ def computer_move(board, computer, human):
         dangerous_indicies = dangerous_move(dangerous_indicies, empty_index, class_result_rows[j])
 
     #столбцы
-        
+    class_result_cols = []*SQUARE_STEP
+    for j in range(0, SQUARE_STEP):
+        sequence = []
+        empty_index = -1
+        for i in range(0, SQUARE_STEP):
+            sequence[i] = board[j + i*SQUARE_STEP]
+            if sequence[i] == EMPTY:
+                empty_index = i
+        class_result_cols[j] = classify_sequnce(sequence, SQUARE_STEP, computer, human)
+        win_brd = winning_move(board, empty_index, class_result_cols[j], computer)
+        if win_brd:
+            return win_brd    
+        dangerous_indicies = dangerous_move(dangerous_indicies, empty_index, class_result_cols[j])
+
+    #если есть опасный ход - выполнить
