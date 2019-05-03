@@ -296,4 +296,28 @@ def computer_move(board, computer, human):
             return win_brd    
         dangerous_indicies = dangerous_move(dangerous_indicies, empty_index, class_result_cols[j])
 
-    #если есть опасный ход - выполнить
+    #если есть опасный ход - выполнить первый
+    if len(dangerous_indicies.keys()) > 0:
+        assert (board[int(dangerous_indicies.keys()[0])] == EMPTY), "Произошла ошибка в логике программы - компьютер пытается сделать ход на уже занятую клетку"
+        board[int(dangerous_indicies.keys()[0])] = computer
+        return board
+
+    #проверяем маршруты, по которым стоит 'ходить'. Предпочтение - в центр
+    if class_result_md == UNCLASSIFIED_SEQ:
+        #если нечётное число клеток квадарта - то предпочтение в центр
+        if SQUARE_STEP % 2 == 1:
+            if board[(NUM_SQUARES // 2)] == EMPTY:
+                board[(NUM_SQUARES // 2)] = computer
+                return board
+        #если чётное - то один из центральных диагональных квадратов
+        else
+            if board[ ((SQUARE_STEP // 2) - 1) * (SQUARE_STEP + 1)  ] == EMPTY:
+                board[ ((SQUARE_STEP // 2) - 1) * (SQUARE_STEP + 1)  ] = computer
+                return board
+            if board[ ((SQUARE_STEP // 2) + 1) * (SQUARE_STEP + 1)  ] == EMPTY:
+                board[ ((SQUARE_STEP // 2) + 1) * (SQUARE_STEP + 1)  ] = computer
+                return board
+        
+            
+
+    
