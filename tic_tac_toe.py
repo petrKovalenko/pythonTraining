@@ -228,6 +228,47 @@ def dangerous_move(dangerous_indicies, empty_index, class_result):
             dangerous_indicies[str(empty_index)] = 1       
     return dangerous_indicies
 
+#фнукция возвращает лучайным образом перемешанный список чисел от begin до end
+# то есть, если Begin = 1, а end = 3, то она может возвратить [1 , 3, 2], [2, 3, 1], [1, 2, 3] и т.д.
+def random_sequence(begin, end):
+    assert (end >= begin), "В функции random_sequence параметр begin не может быть больше параметра end"
+    numbers = []
+    while len(numbers) < end - begin + 1:
+        index = random.randint(begin, end)
+        if index in numbers:
+            index_rigth = index
+            found = False
+            while index_rigth < t_w_len:
+                index_rigth += 1            
+                if not index_rigth in numbers:
+                    found = True
+                    break
+            if not found:
+                while index > 0:
+                    index -= 1
+                    if not index in numbers:
+                        break
+            else:
+                index = index_rigth
+        numbers.append(index)
+    return numbers
+
+#вспомогательная функция для функции computer_move
+#заполняет случайно выбранный пустой элемент последовательности на гировой доске, при этом функция получения последовательности
+#передаётся в качестве аргумента
+def fill_random_empty_cell(board, position_function):
+    empty_qty = 0
+    for i in range(0, SQUARE_STEP):
+        if board[i + SQUARE_STEP*i] == EMPTY:
+            empty_qty += 1
+        random_choice = random.randint(1, empty_qty)
+        for i in range(0, SQUARE_STEP):
+            if board[i + SQUARE_STEP*i] == EMPTY:
+                random_choice -= 1
+        if random_choice == 0:
+            board[i + SQUARE_STEP*i] = computer
+            return board
+        
 #принимает на вход доску, тип фишек игрока и компьютера
 #возвращает доску, на которой сделан ход компьютера
 def computer_move(board, computer, human):
@@ -318,6 +359,7 @@ def computer_move(board, computer, human):
             if board[ ((SQUARE_STEP // 2) + 1) * (SQUARE_STEP + 1)  ] == EMPTY:
                 board[ ((SQUARE_STEP // 2) + 1) * (SQUARE_STEP + 1)  ] = computer
                 return board
+        
     #обртаная диагональ    
     if class_result_rd == UNCLASSIFIED_SEQ:  
         if SQUARE_STEP % 2 == 1:
@@ -331,6 +373,17 @@ def computer_move(board, computer, human):
             if board[ ((SQUARE_STEP // 2) + 1) * (SQUARE_STEP + 1) -  1] == EMPTY:
                 board[ ((SQUARE_STEP // 2) + 1) * (SQUARE_STEP + 1) - 1] = computer
                 return board
-    #строки и столбцы
-    
+
+    #диагонали, строки и столбцы - случайный выбор, кого первого проверяем. В первой же не безнадёжной строке - делаем случайный ход
+    # 0 - гл. диагональ, 1 - обр. диаг., 2 to SQUARE_STEP + 1 - строки, SQUARE_STEP + 2 to 2*SQUARE_STEP + 1 - столбцы
+    rnd_seq = random_sequence(0, 2*SQUARE_STEP + 1)
+    for seq_elem in rnd_seq:
+        if seq_elem == 0 && class_result_md == UNCLASSIFIED_SEQ:
+            
+                    
+                    
+                
+            
+    #если не походили - делаем 'безнадёжный ход' в любую свободную клетку
+        
     
