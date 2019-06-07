@@ -53,6 +53,7 @@ TEST_DISPLAYBOARD = 0
 TEST_LEGEL_MOVES = 0
 TEST_WINNING = 0
 TEST_HUMAN_MOVE = 0
+TEST_fill_random_empty_cell = 1
 
 if TEST_INSTRUCT == 1:
     print("Тест функции tic_tac_toe.instructions")
@@ -152,5 +153,8 @@ if TEST_HUMAN_MOVE == 1:
     newboard = tic_tac_toe.human_move(BOARD_TWO, tic_tac_toe.ZERO)
     print("Доска полсе хода игрока")
     tic_tac_toe.display_board(newboard)
+
+if TEST_fill_random_empty_cell == 1:
+    print("Тесто вспомогательной функции tic_tac_toe.fill_random_empty_cell с фнукцией выбора строки tic_tac_toe.main_diag")
     
 input("/n/n Нажмите Enter, чтобы выйти!")
