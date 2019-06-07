@@ -254,20 +254,36 @@ def random_sequence(begin, end):
     return numbers
 
 #вспомогательная функция для функции computer_move
-#заполняет случайно выбранный пустой элемент последовательности на гировой доске, при этом функция получения последовательности
+#заполняет случайно выбранный пустой элемент последовательности на игровой доске, при этом функция получения последовательности
 #передаётся в качестве аргумента
-def fill_random_empty_cell(board, position_function):
+def fill_random_empty_cell(board, position, position_function):
     empty_qty = 0
     for i in range(0, SQUARE_STEP):
-        if board[i + SQUARE_STEP*i] == EMPTY:
+        if board[position_function(i, position)] == EMPTY:
             empty_qty += 1
-        random_choice = random.randint(1, empty_qty)
-        for i in range(0, SQUARE_STEP):
-            if board[i + SQUARE_STEP*i] == EMPTY:
+    random_choice = random.randint(1, empty_qty)
+    for i in range(0, SQUARE_STEP):
+        cur_position = position_function(i, position)
+        if board[cur_position] == EMPTY:
                 random_choice -= 1
         if random_choice == 0:
-            board[i + SQUARE_STEP*i] = computer
+            board[cur_position] = computer
             return board
+    assert false, "Произошла ошибка в логике программы, в функции fill_random_empty_cell - функция должна была выбрать случайное пустое место в последовательности, но не выбрала."
+
+#вспомогательная функция для ф-ий computer_move и fill_random_empty_cell
+#возвращает последовательность координат, соответсвующих главной диагонали
+def main_diag(iter_number, position):
+    assert isinstance(iter_number, int), "В функцию main_diag передан аргумент, не являющийся целым числом."
+    assert ( iter_number < 0 or iter_number >= SQUARE_STEP), "Входная переменная iter_number должна быть от " + 0 + "включительно до " + SQUARE_STEP + " не включительно"
+    return iter_number + SQUARE_STEP*iter_number
+
+#вспомогательная функция для ф-ий computer_move и fill_random_empty_cell
+#возвращает последовательность координат, соответсвующих обратной диагонали
+def reverse_diag(iter_number, position):
+    assert isinstance(iter_number, int), "В функцию reverse_diag передан аргумент, не являющийся целым числом."
+    assert ( iter_number < 0 or iter_number >= SQUARE_STEP), "Входная переменная iter_number должна быть от " + 0 + "включительно до " + SQUARE_STEP + " не включительно"
+    return (iter_number + 1) * (SQUARE_STEP - 1)
         
 #принимает на вход доску, тип фишек игрока и компьютера
 #возвращает доску, на которой сделан ход компьютера
@@ -360,7 +376,7 @@ def computer_move(board, computer, human):
                 board[ ((SQUARE_STEP // 2) + 1) * (SQUARE_STEP + 1)  ] = computer
                 return board
         
-    #обртаная диагональ    
+    #обратная диагональ    
     if class_result_rd == UNCLASSIFIED_SEQ:  
         if SQUARE_STEP % 2 == 1:
             if board[(NUM_SQUARES // 2)] == EMPTY:
