@@ -42,6 +42,10 @@ BOARD_NINE = [tic_tac_toe.ZERO, tic_tac_toe.ZERO, tic_tac_toe.CROSS,
 BOARD_TIE = [tic_tac_toe.ZERO, tic_tac_toe.CROSS, tic_tac_toe.ZERO,
                                               tic_tac_toe.ZERO, tic_tac_toe.CROSS, tic_tac_toe.CROSS,
                                               tic_tac_toe.CROSS, tic_tac_toe.ZERO, tic_tac_toe.CROSS]
+#non filled diag
+EMPTY_DIAG = [tic_tac_toe.EMPTY, tic_tac_toe.CROSS, tic_tac_toe.ZERO,
+                                              tic_tac_toe.ZERO, tic_tac_toe.EMPTY, tic_tac_toe.CROSS,
+                                              tic_tac_toe.CROSS, tic_tac_toe.ZERO, tic_tac_toe.EMPTY]
 
 #определяем константами, какие функции тестить
 TEST_INSTRUCT = 0
@@ -151,10 +155,14 @@ if TEST_HUMAN_MOVE == 1:
     print("Тест функции tic_tac_toe.human_move на второй доске")
     tic_tac_toe.display_board(BOARD_TWO)
     newboard = tic_tac_toe.human_move(BOARD_TWO, tic_tac_toe.ZERO)
-    print("Доска полсе хода игрока")
+    print("Доска после хода игрока")
     tic_tac_toe.display_board(newboard)
 
 if TEST_fill_random_empty_cell == 1:
     print("Тесто вспомогательной функции tic_tac_toe.fill_random_empty_cell с фнукцией выбора строки tic_tac_toe.main_diag")
+    tic_tac_toe.display_board(EMPTY_DIAG)
+    newboard = tic_tac_toe.fill_random_empty_cell(EMPTY_DIAG, -1, tic_tac_toe.main_diag, tic_tac_toe.CROSS)
+    print("Доска после заполнения:")
+    tic_tac_toe.display_board(newboard)
     
 input("/n/n Нажмите Enter, чтобы выйти!")
