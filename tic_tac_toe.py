@@ -411,10 +411,12 @@ def computer_move(board, computer, human):
     # 0 - гл. диагональ, 1 - обр. диаг., 2 to SQUARE_STEP + 1 - строки, SQUARE_STEP + 2 to 2*SQUARE_STEP + 1 - столбцы
     rnd_seq = random_sequence(0, 2*SQUARE_STEP + 1)
     for seq_elem in rnd_seq:
-        if seq_elem == 0 and class_result_md == UNCLASSIFIED_SEQ:
-            return 0 #STUB
-                    
-                    
+        if seq_elem == 0 and class_result_md == UNCLASSIFIED_SEQ: #если выпала главная диагональ, и на ней есть смысл сделать ход
+            return fill_random_empty_cell(board, -1, main_diag, computer)
+        if seq_elem == 1 and class_result_rd == UNCLASSIFIED_SEQ: #если выпала обратная диагональ, и на ней есть смысл сделать ход
+            return fill_random_empty_cell(board, -1, reverse_diag, computer)
+        if seq_elem > 1 and seq_elem <= SQUARE_STEP + 1 and class_result_rows[seq_elem - 2] == UNCLASSIFIED_SEQ: #если выпала строка, и на ней есть смысл сделать ход
+            return  fill_random_empty_cell(board, seq_elem - 2, row, computer)       
                 
             
     #если не походили - делаем 'безнадёжный ход' в любую свободную клетку
