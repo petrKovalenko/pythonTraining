@@ -47,6 +47,21 @@ EMPTY_DIAG = [tic_tac_toe.EMPTY, tic_tac_toe.CROSS, tic_tac_toe.ZERO,
                                               tic_tac_toe.ZERO, tic_tac_toe.EMPTY, tic_tac_toe.CROSS,
                                               tic_tac_toe.CROSS, tic_tac_toe.ZERO, tic_tac_toe.EMPTY]
 
+#non filled reverse diag
+EMPTY_RV_DIAG = [tic_tac_toe.EMPTY, tic_tac_toe.CROSS, tic_tac_toe.EMPTY,
+                                              tic_tac_toe.ZERO, tic_tac_toe.EMPTY, tic_tac_toe.CROSS,
+                                              tic_tac_toe.EMPTY, tic_tac_toe.ZERO, tic_tac_toe.EMPTY]
+
+#partly filled second column
+EMPTY_SECOND_COL = [tic_tac_toe.EMPTY, tic_tac_toe.CROSS, tic_tac_toe.EMPTY,
+                                              tic_tac_toe.ZERO, tic_tac_toe.EMPTY, tic_tac_toe.CROSS,
+                                              tic_tac_toe.EMPTY, tic_tac_toe.EMPTY, tic_tac_toe.EMPTY]
+
+#partly filled third row
+EMPTY_THIRD_ROW = [tic_tac_toe.EMPTY, tic_tac_toe.CROSS, tic_tac_toe.EMPTY,
+                                              tic_tac_toe.ZERO, tic_tac_toe.EMPTY, tic_tac_toe.CROSS,
+                                              tic_tac_toe.EMPTY, tic_tac_toe.EMPTY, tic_tac_toe.ZERO]
+
 #определяем константами, какие функции тестить
 TEST_INSTRUCT = 0
 TEST_ASK_Y_N = 0
@@ -159,9 +174,27 @@ if TEST_HUMAN_MOVE == 1:
     tic_tac_toe.display_board(newboard)
 
 if TEST_fill_random_empty_cell == 1:
-    print("Тесто вспомогательной функции tic_tac_toe.fill_random_empty_cell с фнукцией выбора строки tic_tac_toe.main_diag")
+    print("Тест вспомогательной функции tic_tac_toe.fill_random_empty_cell с функцией выбора строки tic_tac_toe.main_diag")
     tic_tac_toe.display_board(EMPTY_DIAG)
     newboard = tic_tac_toe.fill_random_empty_cell(EMPTY_DIAG, -1, tic_tac_toe.main_diag, tic_tac_toe.CROSS)
+    print("Доска после заполнения:")
+    tic_tac_toe.display_board(newboard)
+
+    print("Тест вспомогательной функции tic_tac_toe.fill_random_empty_cell с функцией выбора строки tic_tac_toe.reverse_diag")
+    tic_tac_toe.display_board(EMPTY_RV_DIAG)
+    newboard = tic_tac_toe.fill_random_empty_cell(EMPTY_RV_DIAG, -1, tic_tac_toe.reverse_diag, tic_tac_toe.CROSS)
+    print("Доска после заполнения:")
+    tic_tac_toe.display_board(newboard)
+
+    print("Тест вспомогательной функции tic_tac_toe.fill_random_empty_cell с функцией выбора строки tic_tac_toe.column")
+    tic_tac_toe.display_board(EMPTY_SECOND_COL)
+    newboard = tic_tac_toe.fill_random_empty_cell(EMPTY_SECOND_COL, 1, tic_tac_toe.column, tic_tac_toe.CROSS)
+    print("Доска после заполнения:")
+    tic_tac_toe.display_board(newboard)
+
+    print("Тест вспомогательной функции tic_tac_toe.fill_random_empty_cell с функцией выбора строки tic_tac_toe.row")
+    tic_tac_toe.display_board(EMPTY_THIRD_ROW)
+    newboard = tic_tac_toe.fill_random_empty_cell(EMPTY_THIRD_ROW, 2, tic_tac_toe.row, tic_tac_toe.CROSS)
     print("Доска после заполнения:")
     tic_tac_toe.display_board(newboard)
     
