@@ -62,6 +62,16 @@ EMPTY_THIRD_ROW = [tic_tac_toe.EMPTY, tic_tac_toe.CROSS, tic_tac_toe.EMPTY,
                                               tic_tac_toe.ZERO, tic_tac_toe.EMPTY, tic_tac_toe.CROSS,
                                               tic_tac_toe.EMPTY, tic_tac_toe.EMPTY, tic_tac_toe.ZERO]
 
+#cross to win main diag
+ABOUT_TO_WIN_MD = [tic_tac_toe.EMPTY, tic_tac_toe.CROSS, tic_tac_toe.ZERO,
+                                              tic_tac_toe.ZERO, tic_tac_toe.CROSS, tic_tac_toe.EMPTY,
+                                              tic_tac_toe.EMPTY, tic_tac_toe.ZERO, tic_tac_toe.CROSS]
+
+#cross to win main diag 2
+ABOUT_TO_WIN_MD2 = [tic_tac_toe.CROSS, tic_tac_toe.CROSS, tic_tac_toe.ZERO,
+                                              tic_tac_toe.ZERO, tic_tac_toe.EMPTY, tic_tac_toe.EMPTY,
+                                              tic_tac_toe.EMPTY, tic_tac_toe.ZERO, tic_tac_toe.CROSS]
+
 #определяем константами, какие функции тестить
 TEST_INSTRUCT = 0
 TEST_ASK_Y_N = 0
@@ -203,6 +213,18 @@ if TEST_computer_move == 1:
     print("Тест функции tic_tac_toe.computer_move на первой доске")
     tic_tac_toe.display_board(EMPTY_THIRD_ROW)
     newboard = tic_tac_toe.computer_move(EMPTY_THIRD_ROW, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
+    print("Доска после хода компьютера:")
+    tic_tac_toe.display_board(newboard)
+
+    print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_MD")
+    tic_tac_toe.display_board(ABOUT_TO_WIN_MD)
+    newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_MD, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
+    print("Доска после хода компьютера:")
+    tic_tac_toe.display_board(newboard)
+
+    print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_MD2")
+    tic_tac_toe.display_board(ABOUT_TO_WIN_MD2)
+    newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_MD2, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
     print("Доска после хода компьютера:")
     tic_tac_toe.display_board(newboard)
     
