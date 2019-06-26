@@ -320,7 +320,7 @@ def computer_move(board, computer, human):
     for i in range(0, SQUARE_STEP):
         sequence[i] = board[i + SQUARE_STEP*i]
         if sequence[i] == EMPTY:
-            empty_index = i
+            empty_index = i + SQUARE_STEP*i
     class_result_md = classify_sequnce(sequence, SQUARE_STEP, computer, human)
     win_brd = winning_move(board, empty_index, class_result_md, computer)
     if win_brd:
@@ -333,7 +333,7 @@ def computer_move(board, computer, human):
     for i in range(0, SQUARE_STEP):
         sequence[i] = board[(i + 1) * (SQUARE_STEP - 1)]
         if sequence[i] == EMPTY:
-            empty_index = i
+            empty_index = (i + 1) * (SQUARE_STEP - 1)
     class_result_rd = classify_sequnce(sequence, SQUARE_STEP, computer, human)
     win_brd = winning_move(board, empty_index, class_result_rd, computer)
     if win_brd:
@@ -348,7 +348,7 @@ def computer_move(board, computer, human):
         for i in range(0, SQUARE_STEP):
             sequence[i] = board[SQUARE_STEP*j + i]
             if sequence[i] == EMPTY:
-                empty_index = i
+                empty_index = SQUARE_STEP*j + i
         class_result_rows[j] = classify_sequnce(sequence, SQUARE_STEP, computer, human)
         win_brd = winning_move(board, empty_index, class_result_rows[j], computer)
         if win_brd:
@@ -363,7 +363,7 @@ def computer_move(board, computer, human):
         for i in range(0, SQUARE_STEP):
             sequence[i] = board[j + i*SQUARE_STEP]
             if sequence[i] == EMPTY:
-                empty_index = i
+                empty_index = j + i*SQUARE_STEP
         class_result_cols[j] = classify_sequnce(sequence, SQUARE_STEP, computer, human)
         win_brd = winning_move(board, empty_index, class_result_cols[j], computer)
         if win_brd:
