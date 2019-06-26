@@ -203,5 +203,7 @@ if TEST_computer_move == 1:
     print("Тест функции tic_tac_toe.computer_move на первой доске")
     tic_tac_toe.display_board(EMPTY_THIRD_ROW)
     newboard = tic_tac_toe.computer_move(EMPTY_THIRD_ROW, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
+    print("Доска после хода компьютера:")
+    tic_tac_toe.display_board(newboard)
     
 input("/n/n Нажмите Enter, чтобы выйти!")
