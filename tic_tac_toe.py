@@ -315,7 +315,7 @@ def computer_move(board, computer, human):
     #если есть опасная ситуация, складываем сюда индексы, которые нужно заполнить для избежания опасной ситуации - победы игрока
     dangerous_indicies = {}
     #главная диагональ md
-    sequence = []
+    sequence = [None]*SQUARE_STEP
     empty_index = -1
     for i in range(0, SQUARE_STEP):
         sequence[i] = board[i + SQUARE_STEP*i]
@@ -328,7 +328,7 @@ def computer_move(board, computer, human):
     dangerous_indicies = dangerous_move(dangerous_indicies, empty_index, class_result_md)
 
     #обратная диагональ rd
-    sequence = []
+    sequence = [None]*SQUARE_STEP
     empty_index = -1
     for i in range(0, SQUARE_STEP):
         sequence[i] = board[(i + 1) * (SQUARE_STEP - 1)]
@@ -341,9 +341,9 @@ def computer_move(board, computer, human):
     dangerous_indicies = dangerous_move(dangerous_indicies, empty_index, class_result_rd)
 
     #строки
-    class_result_rows = []*SQUARE_STEP
+    class_result_rows = [None]*SQUARE_STEP
     for j in range(0, SQUARE_STEP):
-        sequence = []
+        sequence = [None]*SQUARE_STEP
         empty_index = -1
         for i in range(0, SQUARE_STEP):
             sequence[i] = board[SQUARE_STEP*j + i]
@@ -356,9 +356,9 @@ def computer_move(board, computer, human):
         dangerous_indicies = dangerous_move(dangerous_indicies, empty_index, class_result_rows[j])
 
     #столбцы
-    class_result_cols = []*SQUARE_STEP
+    class_result_cols = [None]*SQUARE_STEP
     for j in range(0, SQUARE_STEP):
-        sequence = []
+        sequence = [None]*SQUARE_STEP
         empty_index = -1
         for i in range(0, SQUARE_STEP):
             sequence[i] = board[j + i*SQUARE_STEP]
@@ -427,5 +427,5 @@ def computer_move(board, computer, human):
             board[i] = computer
             return board
 
-     assert false, "Произошла ошибка в логике программы, функция computer_move, у компьютера нет доступных ходов!"
+    assert false, "Произошла ошибка в логике программы, функция computer_move, у компьютера нет доступных ходов!"
     
