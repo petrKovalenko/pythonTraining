@@ -422,5 +422,10 @@ def computer_move(board, computer, human):
                 
             
     #если не походили - делаем 'безнадёжный ход' в любую свободную клетку
-    return   fill_random_empty_cell(board, -1, )  
+    for i in range(0, NUM_SQUARES):
+        if board[i] == EMPTY:
+            board[i] = computer
+            return board
+
+     assert false, "Произошла ошибка в логике программы, функция computer_move, у компьютера нет доступных ходов!"
     
