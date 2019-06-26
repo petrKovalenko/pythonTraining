@@ -72,7 +72,8 @@ TEST_DISPLAYBOARD = 0
 TEST_LEGEL_MOVES = 0
 TEST_WINNING = 0
 TEST_HUMAN_MOVE = 0
-TEST_fill_random_empty_cell = 1
+TEST_fill_random_empty_cell = 0
+TEST_computer_move = 1
 
 if TEST_INSTRUCT == 1:
     print("Тест функции tic_tac_toe.instructions")
@@ -197,5 +198,10 @@ if TEST_fill_random_empty_cell == 1:
     newboard = tic_tac_toe.fill_random_empty_cell(EMPTY_THIRD_ROW, 2, tic_tac_toe.row, tic_tac_toe.CROSS)
     print("Доска после заполнения:")
     tic_tac_toe.display_board(newboard)
+
+if TEST_computer_move == 1:
+    print("Тест функции tic_tac_toe.computer_move на первой доске")
+    tic_tac_toe.display_board(EMPTY_THIRD_ROW)
+    newboard = tic_tac_toe.computer_move(EMPTY_THIRD_ROW, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
     
 input("/n/n Нажмите Enter, чтобы выйти!")
