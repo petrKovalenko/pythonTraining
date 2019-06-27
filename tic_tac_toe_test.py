@@ -80,8 +80,8 @@ ABOUT_TO_WIN_MD3 = [tic_tac_toe.CROSS, tic_tac_toe.CROSS, tic_tac_toe.ZERO,
 
 #cross to win reverse diag 1
 ABOUT_TO_WIN_RD1 = [tic_tac_toe.ZERO, tic_tac_toe.CROSS, tic_tac_toe.CROSS,
-                                              tic_tac_toe.ZERO, tic_tac_toe.CROSS, tic_tac_toe.EMPTY,
-                                              tic_tac_toe.EMPTY, tic_tac_toe.ZERO, tic_tac_toe.ZERO]
+                                              tic_tac_toe.EMPTY, tic_tac_toe.CROSS, tic_tac_toe.EMPTY,
+                                              tic_tac_toe.EMPTY, tic_tac_toe.EMPTY, tic_tac_toe.ZERO]
 
 #cross to win reverse diag 2
 ABOUT_TO_WIN_RD2 = [tic_tac_toe.ZERO, tic_tac_toe.CROSS, tic_tac_toe.EMPTY,
@@ -96,17 +96,61 @@ ABOUT_TO_WIN_RD3 = [tic_tac_toe.ZERO, tic_tac_toe.CROSS, tic_tac_toe.CROSS,
 #cross to win row 1
 ABOUT_TO_WIN_ROW1 = [tic_tac_toe.EMPTY, tic_tac_toe.CROSS, tic_tac_toe.CROSS,
                                               tic_tac_toe.ZERO, tic_tac_toe.EMPTY, tic_tac_toe.EMPTY,
-                                              tic_tac_toe.EMPTY, tic_tac_toe.ZERO, tic_tac_toe.ZERO]
+                                              tic_tac_toe.EMPTY, tic_tac_toe.EMPTY, tic_tac_toe.ZERO]
 
 #cross to win row 2
-ABOUT_TO_WIN_ROW2 = [tic_tac_toe.ZERO, tic_tac_toe.CROSS, tic_tac_toe.EMPTY,
+ABOUT_TO_WIN_ROW2 = [tic_tac_toe.ZERO, tic_tac_toe.EMPTY, tic_tac_toe.EMPTY,
                                               tic_tac_toe.CROSS, tic_tac_toe.CROSS, tic_tac_toe.EMPTY,
-                                              tic_tac_toe.ZERO, tic_tac_toe.ZERO, tic_tac_toe.EMPTY]
+                                              tic_tac_toe.ZERO, tic_tac_toe.EMPTY, tic_tac_toe.EMPTY]
 
 #cross to win row 3
 ABOUT_TO_WIN_ROW3 = [tic_tac_toe.ZERO, tic_tac_toe.CROSS, tic_tac_toe.ZERO,
-                                              tic_tac_toe.ZERO, tic_tac_toe.ZERO, tic_tac_toe.EMPTY,
+                                              tic_tac_toe.ZERO, tic_tac_toe.EMPTY, tic_tac_toe.EMPTY,
                                               tic_tac_toe.CROSS, tic_tac_toe.EMPTY, tic_tac_toe.CROSS]
+
+#cross to win col 1
+ABOUT_TO_WIN_COL1 = [tic_tac_toe.CROSS, tic_tac_toe.EMPTY, tic_tac_toe.ZERO,
+                                              tic_tac_toe.EMPTY, tic_tac_toe.EMPTY, tic_tac_toe.EMPTY,
+                                              tic_tac_toe.CROSS, tic_tac_toe.ZERO, tic_tac_toe.EMPTY]
+#cross to win col 2
+ABOUT_TO_WIN_COL2 = [tic_tac_toe.ZERO, tic_tac_toe.EMPTY, tic_tac_toe.EMPTY,
+                                              tic_tac_toe.EMPTY, tic_tac_toe.CROSS, tic_tac_toe.EMPTY,
+                                              tic_tac_toe.EMPTY, tic_tac_toe.CROSS, tic_tac_toe.ZERO]
+#cross to win col 3
+ABOUT_TO_WIN_COL3 = [tic_tac_toe.EMPTY, tic_tac_toe.EMPTY, tic_tac_toe.CROSS,
+                                              tic_tac_toe.ZERO, tic_tac_toe.EMPTY, tic_tac_toe.CROSS,
+                                              tic_tac_toe.EMPTY, tic_tac_toe.ZERO, tic_tac_toe.EMPTY]
+
+#empty board
+EMPTY_BOARD = [tic_tac_toe.EMPTY, tic_tac_toe.EMPTY, tic_tac_toe.EMPTY,
+                                              tic_tac_toe.EMPTY, tic_tac_toe.EMPTY, tic_tac_toe.EMPTY,
+                                              tic_tac_toe.EMPTY, tic_tac_toe.EMPTY, tic_tac_toe.EMPTY]
+
+#перспективная главная диагональ
+PERSPECTOVE_MD = [tic_tac_toe.CROSS, tic_tac_toe.EMPTY, tic_tac_toe.EMPTY,
+                                              tic_tac_toe.EMPTY, tic_tac_toe.EMPTY, tic_tac_toe.EMPTY,
+                                              tic_tac_toe.ZERO, tic_tac_toe.EMPTY, tic_tac_toe.EMPTY]
+#перспективная обратная диагональ
+PERSPECTOVE_RD = [tic_tac_toe.CROSS, tic_tac_toe.EMPTY, tic_tac_toe.EMPTY,
+                                              tic_tac_toe.ZERO, tic_tac_toe.EMPTY, tic_tac_toe.EMPTY,
+                                              tic_tac_toe.CROSS, tic_tac_toe.EMPTY, tic_tac_toe.ZERO]
+#перспективная главная и обратная диагональ
+PERSPECTOVE_MD_RD = [tic_tac_toe.EMPTY, tic_tac_toe.CROSS, tic_tac_toe.EMPTY,
+                                              tic_tac_toe.EMPTY, tic_tac_toe.EMPTY, tic_tac_toe.EMPTY,
+                                              tic_tac_toe.EMPTY, tic_tac_toe.ZERO, tic_tac_toe.EMPTY]
+
+#perspective moves 1
+P_MV_1 = [tic_tac_toe.EMPTY, tic_tac_toe.EMPTY, tic_tac_toe.EMPTY,
+                                              tic_tac_toe.EMPTY, tic_tac_toe.CROSS, tic_tac_toe.EMPTY,
+                                              tic_tac_toe.EMPTY, tic_tac_toe.EMPTY, tic_tac_toe.EMPTY]
+#perspective moves 2
+P_MV_2 = [tic_tac_toe.EMPTY, tic_tac_toe.EMPTY, tic_tac_toe.EMPTY,
+                                              tic_tac_toe.EMPTY, tic_tac_toe.CROSS, tic_tac_toe.EMPTY,
+                                              tic_tac_toe.ZERO, tic_tac_toe.EMPTY, tic_tac_toe.EMPTY]
+#perspective moves 3
+P_MV_3= [tic_tac_toe.EMPTY, tic_tac_toe.EMPTY, tic_tac_toe.CROSS,
+                                              tic_tac_toe.EMPTY, tic_tac_toe.ZERO, tic_tac_toe.EMPTY,
+                                              tic_tac_toe.EMPTY, tic_tac_toe.EMPTY, tic_tac_toe.EMPTY]
 
 #определяем константами, какие функции тестить
 TEST_INSTRUCT = 0
@@ -119,7 +163,29 @@ TEST_LEGEL_MOVES = 0
 TEST_WINNING = 0
 TEST_HUMAN_MOVE = 0
 TEST_fill_random_empty_cell = 0
+TEST_random_sequence = 0
 TEST_computer_move = 1
+TEST_computer_move_about_to_win = 0
+TEST_computer_move_about_to_loose = 0
+TEST_computer_move_diagonal_first = 0
+TEST_computer_move_perspective_moves = 1
+
+if TEST_random_sequence == 1:
+    print("Тест функции tic_tac_toe.random_sequence")
+    print("From -1 to 12 (3 times)")
+    print(tic_tac_toe.random_sequence(-1, 12))
+    print(tic_tac_toe.random_sequence(-1, 12))
+    print(tic_tac_toe.random_sequence(-1, 12))
+
+    print("From 0 to 3 (3 times)")
+    print(tic_tac_toe.random_sequence(0, 3))
+    print(tic_tac_toe.random_sequence(0, 3))
+    print(tic_tac_toe.random_sequence(0, 3))
+
+    print("From 8 to 16 (3 times)")
+    print(tic_tac_toe.random_sequence(8, 16))
+    print(tic_tac_toe.random_sequence(8, 16))
+    print(tic_tac_toe.random_sequence(8, 16))
 
 if TEST_INSTRUCT == 1:
     print("Тест функции tic_tac_toe.instructions")
@@ -253,61 +319,201 @@ if TEST_computer_move == 1:
     tic_tac_toe.display_board(newboard)
 
 #-------------------------------Tests about to win-----------------------------------------------------------------
-    
-    print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_MD")
-    tic_tac_toe.display_board(ABOUT_TO_WIN_MD)
-    newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_MD, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
-    print("Доска после хода компьютера:")
-    tic_tac_toe.display_board(newboard)
+    if TEST_computer_move_about_to_win == 1:
+        print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_MD")
+        tic_tac_toe.display_board(ABOUT_TO_WIN_MD)
+        newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_MD, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
+        print("Доска после хода компьютера:")
+        tic_tac_toe.display_board(newboard)
 
-    print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_MD2")
-    tic_tac_toe.display_board(ABOUT_TO_WIN_MD2)
-    newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_MD2, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
-    print("Доска после хода компьютера:")
-    tic_tac_toe.display_board(newboard)
+        print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_MD2")
+        tic_tac_toe.display_board(ABOUT_TO_WIN_MD2)
+        newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_MD2, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
+        print("Доска после хода компьютера:")
+        tic_tac_toe.display_board(newboard)
 
-    
-    print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_MD3")
-    tic_tac_toe.display_board(ABOUT_TO_WIN_MD3)
-    newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_MD3, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
-    print("Доска после хода компьютера:")
-    tic_tac_toe.display_board(newboard) 
+        
+        print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_MD3")
+        tic_tac_toe.display_board(ABOUT_TO_WIN_MD3)
+        newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_MD3, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
+        print("Доска после хода компьютера:")
+        tic_tac_toe.display_board(newboard) 
 
-    print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_RD1")
-    tic_tac_toe.display_board(ABOUT_TO_WIN_RD1)
-    newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_RD1, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
-    print("Доска после хода компьютера:")
-    tic_tac_toe.display_board(newboard)
+        print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_RD1")
+        tic_tac_toe.display_board(ABOUT_TO_WIN_RD1)
+        newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_RD1, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
+        print("Доска после хода компьютера:")
+        tic_tac_toe.display_board(newboard)
 
-    print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_RD2")
-    tic_tac_toe.display_board(ABOUT_TO_WIN_RD2)
-    newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_RD2, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
-    print("Доска после хода компьютера:")
-    tic_tac_toe.display_board(newboard)
+        print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_RD2")
+        tic_tac_toe.display_board(ABOUT_TO_WIN_RD2)
+        newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_RD2, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
+        print("Доска после хода компьютера:")
+        tic_tac_toe.display_board(newboard)
 
-    print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_RD3")
-    tic_tac_toe.display_board(ABOUT_TO_WIN_RD3)
-    newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_RD3, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
-    print("Доска после хода компьютера:")
-    tic_tac_toe.display_board(newboard)
+        print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_RD3")
+        tic_tac_toe.display_board(ABOUT_TO_WIN_RD3)
+        newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_RD3, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
+        print("Доска после хода компьютера:")
+        tic_tac_toe.display_board(newboard)
+        
 
-    
+        print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_ROW1")
+        tic_tac_toe.display_board(ABOUT_TO_WIN_ROW1)
+        newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_ROW1, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
+        print("Доска после хода компьютера:")
+        tic_tac_toe.display_board(newboard)
 
-    print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_ROW1")
-    tic_tac_toe.display_board(ABOUT_TO_WIN_ROW1)
-    newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_ROW1, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
-    print("Доска после хода компьютера:")
-    tic_tac_toe.display_board(newboard)
+        print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_ROW2")
+        tic_tac_toe.display_board(ABOUT_TO_WIN_ROW2)
+        newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_ROW2, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
+        print("Доска после хода компьютера:")
+        tic_tac_toe.display_board(newboard)
 
-    print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_ROW2")
-    tic_tac_toe.display_board(ABOUT_TO_WIN_ROW2)
-    newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_ROW2, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
-    print("Доска после хода компьютера:")
-    tic_tac_toe.display_board(newboard)
+        print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_ROW3")
+        tic_tac_toe.display_board(ABOUT_TO_WIN_ROW3)
+        newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_ROW3, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
+        print("Доска после хода компьютера:")
+        tic_tac_toe.display_board(newboard)
 
-    print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_ROW3")
-    tic_tac_toe.display_board(ABOUT_TO_WIN_ROW3)
-    newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_ROW3, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
-    print("Доска после хода компьютера:")
-    tic_tac_toe.display_board(newboard)
+        print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_COL1")
+        tic_tac_toe.display_board(ABOUT_TO_WIN_COL1)
+        newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_COL1, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
+        print("Доска после хода компьютера:")
+        tic_tac_toe.display_board(newboard)
+
+        print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_COL2")
+        tic_tac_toe.display_board(ABOUT_TO_WIN_COL2)
+        newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_COL2, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
+        print("Доска после хода компьютера:")
+        tic_tac_toe.display_board(newboard)
+
+        print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_COL3")
+        tic_tac_toe.display_board(ABOUT_TO_WIN_COL3)
+        newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_COL3, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
+        print("Доска после хода компьютера:")
+        tic_tac_toe.display_board(newboard)
+
+#-------------------------------Tests about to loose (computer is ZERO)-----------------------------------------------------------------
+    if TEST_computer_move_about_to_loose == 1:
+        print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_MD - about to loose(comp is ZERO)")
+        tic_tac_toe.display_board(ABOUT_TO_WIN_MD)
+        newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_MD, tic_tac_toe.ZERO, tic_tac_toe.CROSS)
+        print("Доска после хода компьютера:")
+        tic_tac_toe.display_board(newboard)
+
+        print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_MD2 - about to loose(comp is ZERO)")
+        tic_tac_toe.display_board(ABOUT_TO_WIN_MD2)
+        newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_MD2, tic_tac_toe.ZERO, tic_tac_toe.CROSS)
+        print("Доска после хода компьютера:")
+        tic_tac_toe.display_board(newboard)
+
+        
+        print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_MD3 - about to loose(comp is ZERO)")
+        tic_tac_toe.display_board(ABOUT_TO_WIN_MD3)
+        newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_MD3, tic_tac_toe.ZERO, tic_tac_toe.CROSS)
+        print("Доска после хода компьютера:")
+        tic_tac_toe.display_board(newboard) 
+
+        print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_RD1 - about to loose(comp is ZERO)")
+        tic_tac_toe.display_board(ABOUT_TO_WIN_RD1)
+        newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_RD1, tic_tac_toe.ZERO, tic_tac_toe.CROSS)
+        print("Доска после хода компьютера:")
+        tic_tac_toe.display_board(newboard)
+
+        print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_RD2 - about to loose(comp is ZERO)")
+        tic_tac_toe.display_board(ABOUT_TO_WIN_RD2)
+        newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_RD2, tic_tac_toe.ZERO, tic_tac_toe.CROSS)
+        print("Доска после хода компьютера:")
+        tic_tac_toe.display_board(newboard)
+
+        print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_RD3 - about to loose(comp is ZERO)")
+        tic_tac_toe.display_board(ABOUT_TO_WIN_RD3)
+        newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_RD3, tic_tac_toe.ZERO, tic_tac_toe.CROSS)
+        print("Доска после хода компьютера:")
+        tic_tac_toe.display_board(newboard)
+        
+
+        print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_ROW1 - about to loose(comp is ZERO)")
+        tic_tac_toe.display_board(ABOUT_TO_WIN_ROW1)
+        newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_ROW1, tic_tac_toe.ZERO, tic_tac_toe.CROSS)
+        print("Доска после хода компьютера:")
+        tic_tac_toe.display_board(newboard)
+
+        print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_ROW2 - about to loose(comp is ZERO)")
+        tic_tac_toe.display_board(ABOUT_TO_WIN_ROW2)
+        newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_ROW2, tic_tac_toe.ZERO, tic_tac_toe.CROSS)
+        print("Доска после хода компьютера:")
+        tic_tac_toe.display_board(newboard)
+
+        print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_ROW3 - about to loose(comp is ZERO)")
+        tic_tac_toe.display_board(ABOUT_TO_WIN_ROW3)
+        newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_ROW3, tic_tac_toe.ZERO, tic_tac_toe.CROSS)
+        print("Доска после хода компьютера:")
+        tic_tac_toe.display_board(newboard)
+
+        print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_COL1 - about to loose(comp is ZERO)")
+        tic_tac_toe.display_board(ABOUT_TO_WIN_COL1)
+        newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_COL1, tic_tac_toe.ZERO, tic_tac_toe.CROSS)
+        print("Доска после хода компьютера:")
+        tic_tac_toe.display_board(newboard)
+
+        print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_COL2 - about to loose(comp is ZERO)")
+        tic_tac_toe.display_board(ABOUT_TO_WIN_COL2)
+        newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_COL2, tic_tac_toe.ZERO, tic_tac_toe.CROSS)
+        print("Доска после хода компьютера:")
+        tic_tac_toe.display_board(newboard)
+
+        print("Тест функции tic_tac_toe.computer_move на доске ABOUT_TO_WIN_COL3 - about to loose(comp is ZERO)")
+        tic_tac_toe.display_board(ABOUT_TO_WIN_COL3)
+        newboard = tic_tac_toe.computer_move(ABOUT_TO_WIN_COL3, tic_tac_toe.ZERO, tic_tac_toe.CROSS)
+        print("Доска после хода компьютера:")
+        tic_tac_toe.display_board(newboard)
+
+#-------------------------------Tests perspective center-----------------------------------------------------------------
+
+    if TEST_computer_move_diagonal_first == 1:
+        print("Тест функции tic_tac_toe.computer_move на доске EMPTY_BOARD")
+        tic_tac_toe.display_board(EMPTY_BOARD)
+        newboard = tic_tac_toe.computer_move(EMPTY_BOARD, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
+        print("Доска после хода компьютера:")
+        tic_tac_toe.display_board(newboard)
+
+        print("Тест функции tic_tac_toe.computer_move на доске PERSPECTOVE_MD")
+        tic_tac_toe.display_board(PERSPECTOVE_MD)
+        newboard = tic_tac_toe.computer_move(PERSPECTOVE_MD, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
+        print("Доска после хода компьютера:")
+        tic_tac_toe.display_board(newboard)
+
+        print("Тест функции tic_tac_toe.computer_move на доске PERSPECTOVE_RD")
+        tic_tac_toe.display_board(PERSPECTOVE_RD)
+        newboard = tic_tac_toe.computer_move(PERSPECTOVE_RD, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
+        print("Доска после хода компьютера:")
+        tic_tac_toe.display_board(newboard)
+
+        print("Тест функции tic_tac_toe.computer_move на доске PERSPECTOVE_MD_RD")
+        tic_tac_toe.display_board(PERSPECTOVE_MD_RD)
+        newboard = tic_tac_toe.computer_move(PERSPECTOVE_MD_RD, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
+        print("Доска после хода компьютера:")
+        tic_tac_toe.display_board(newboard)
+
+#-------------------------------Tests perspective moves-----------------------------------------------------------------
+    if TEST_computer_move_perspective_moves == 1:
+        print("Тест функции tic_tac_toe.computer_move на доске P_MV_1")
+        tic_tac_toe.display_board(P_MV_1)
+        newboard = tic_tac_toe.computer_move(P_MV_1, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
+        print("Доска после хода компьютера:")
+        tic_tac_toe.display_board(newboard)
+
+        print("Тест функции tic_tac_toe.computer_move на доске P_MV_2")
+        tic_tac_toe.display_board(P_MV_2)
+        newboard = tic_tac_toe.computer_move(P_MV_2, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
+        print("Доска после хода компьютера:")
+        tic_tac_toe.display_board(newboard)
+
+        print("Тест функции tic_tac_toe.computer_move на доске P_MV_3")
+        tic_tac_toe.display_board(P_MV_3)
+        newboard = tic_tac_toe.computer_move(P_MV_3, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
+        print("Доска после хода компьютера:")
+        tic_tac_toe.display_board(newboard)
 input("/n/n Нажмите Enter, чтобы выйти!")
