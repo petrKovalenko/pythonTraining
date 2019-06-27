@@ -238,13 +238,13 @@ def random_sequence(begin, end):
         if index in numbers:
             index_rigth = index
             found = False
-            while index_rigth < t_w_len:
+            while index_rigth < end:
                 index_rigth += 1            
                 if not index_rigth in numbers:
                     found = True
                     break
             if not found:
-                while index > 0:
+                while index > begin:
                     index -= 1
                     if not index in numbers:
                         break
@@ -372,9 +372,10 @@ def computer_move(board, computer, human):
 
     #если есть опасный ход - выполнить первый
     if len(dangerous_indicies.keys()) > 0:
-        assert (board[int(dangerous_indicies.keys()[0])] == EMPTY), "Произошла ошибка в логике программы - компьютер пытается сделать ход на уже занятую клетку"
-        board[int(dangerous_indicies.keys()[0])] = computer
-        return board
+        for di_key in dangerous_indicies.keys():
+        #assert (board[int(dangerous_indicies.keys()[0])] == EMPTY), "Произошла ошибка в логике программы - компьютер пытается сделать ход на уже занятую клетку"
+            board[int(di_key)] = computer
+            return board
 
     #проверяем маршруты, по которым стоит 'ходить'. Предпочтение - в центр
     #главная диагональ
@@ -409,7 +410,7 @@ def computer_move(board, computer, human):
 
     #диагонали, строки и столбцы - случайный выбор, кого первого проверяем. В первой же не безнадёжной строке - делаем случайный ход
     # 0 - гл. диагональ, 1 - обр. диаг., 2 to SQUARE_STEP + 1 - строки, SQUARE_STEP + 2 to 2*SQUARE_STEP + 1 - столбцы
-    rnd_seq = random_sequence(0, 2*SQUARE_STEP + 2)
+    rnd_seq = random_sequence(0, 2*SQUARE_STEP + 1)
     for seq_elem in rnd_seq:
         if seq_elem == 0 and class_result_md == UNCLASSIFIED_SEQ: #если выпала главная диагональ, и на ней есть смысл сделать ход
             return fill_random_empty_cell(board, -1, main_diag, computer)
