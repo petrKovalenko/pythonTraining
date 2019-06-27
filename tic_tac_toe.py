@@ -197,10 +197,10 @@ def classify_sequnce(seq, seq_len, computer, human):
         if seq[i] == human:
             human_signs+=1
     #предвыигрышная ситуация
-    if computer_signs == SQUARE_STEP - 1:
+    if computer_signs == SQUARE_STEP - 1 and human_signs == 0:
         return WINNING_SEQ
     #опасная ситуация
-    if human_signs == SQUARE_STEP - 1:
+    if human_signs == SQUARE_STEP - 1 and computer_signs == 0:
         return DANGEROUS_SEQ
     #безполезная строка
     if computer_signs > 0 and human_signs > 0:
@@ -288,7 +288,7 @@ def reverse_diag(iter_number, position):
 
 #вспомогательная функция для ф-ий computer_move и fill_random_empty_cell
 #возвращает последовательность координат, соответсвующих столбцу в позиции position
-def c(iter_number, position):
+def column(iter_number, position):
     assert isinstance(iter_number, int) and isinstance(position, int), "В функцию reverse_diag переданы аргументы, один из которых не является целым числом."
     assert ( iter_number >= 0 and iter_number < SQUARE_STEP), "Входная переменная iter_number должна быть от 0 включительно до " + str(SQUARE_STEP) + " не включительно"
     assert ( position >= 0 and position < SQUARE_STEP), "Входная переменная position должна быть от 0 включительно до " + str(SQUARE_STEP) + " не включительно"
