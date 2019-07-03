@@ -13,6 +13,7 @@ NUM_SQUARES = SQUARE_STEP * SQUARE_STEP
 WINNING_SEQ = "PW"
 DANGEROUS_SEQ = "PD"
 USELESS_SEQ = "US"
+WINNED_SEQ = "WS"
 UNCLASSIFIED_SEQ = "UN"
 
 #функция пытается преобразовать аргумент в int, если не может - возвращает null
@@ -205,6 +206,7 @@ def classify_sequnce(seq, seq_len, computer, human):
     #безполезная строка
     if computer_signs > 0 and human_signs > 0:
         return USELESS_SEQ
+    assert computer_signs < SQUARE_STEP and  human_signs <   SQUARE_STEP, "Already winned board should not be input of the functions computer_move and classify_sequnce"
     return UNCLASSIFIED_SEQ
 
 #вспомогательная функция для функции computer_move
@@ -429,4 +431,15 @@ def computer_move(board, computer, human):
             return board
 
     assert false, "Произошла ошибка в логике программы, функция computer_move, у компьютера нет доступных ходов!"
+
+#возвращает следующий ход
+def next_turn(turn):
+    if turn == CROSS:
+        return ZERO
+    if turn == ZERO:
+        return CROSS
+    assert false, "Произошла ошибка в логике программы, функция next_turn, на вход подан неопределённый символ '"+str(turn)+"'!"
+
+#поздарвляет победителя
+def congrat_winner():
     
