@@ -151,6 +151,14 @@ P_MV_2 = [tic_tac_toe.EMPTY, tic_tac_toe.EMPTY, tic_tac_toe.EMPTY,
 P_MV_3= [tic_tac_toe.EMPTY, tic_tac_toe.EMPTY, tic_tac_toe.CROSS,
                                               tic_tac_toe.EMPTY, tic_tac_toe.ZERO, tic_tac_toe.EMPTY,
                                               tic_tac_toe.EMPTY, tic_tac_toe.EMPTY, tic_tac_toe.EMPTY]
+#desperate random move 1
+RND_MV_1= [tic_tac_toe.CROSS, tic_tac_toe.ZERO, tic_tac_toe.CROSS,
+                                              tic_tac_toe.EMPTY, tic_tac_toe.ZERO, tic_tac_toe.EMPTY,
+                                              tic_tac_toe.ZERO, tic_tac_toe.CROSS, tic_tac_toe.ZERO]
+#desperate random move 2
+RND_MV_2= [tic_tac_toe.EMPTY, tic_tac_toe.ZERO, tic_tac_toe.CROSS,
+                                              tic_tac_toe.CROSS, tic_tac_toe.ZERO, tic_tac_toe.ZERO,
+                                              tic_tac_toe.ZERO, tic_tac_toe.CROSS, tic_tac_toe.EMPTY]
 
 #определяем константами, какие функции тестить
 TEST_INSTRUCT = 0
@@ -164,11 +172,12 @@ TEST_WINNING = 0
 TEST_HUMAN_MOVE = 0
 TEST_fill_random_empty_cell = 0
 TEST_random_sequence = 0
-TEST_computer_move = 1
+TEST_computer_move = 0
 TEST_computer_move_about_to_win = 0
 TEST_computer_move_about_to_loose = 0
 TEST_computer_move_diagonal_first = 0
-TEST_computer_move_perspective_moves = 1
+TEST_computer_move_perspective_moves = 0
+TEST_computer_move_random_moves = 0
 
 if TEST_random_sequence == 1:
     print("Тест функции tic_tac_toe.random_sequence")
@@ -514,6 +523,19 @@ if TEST_computer_move == 1:
         print("Тест функции tic_tac_toe.computer_move на доске P_MV_3")
         tic_tac_toe.display_board(P_MV_3)
         newboard = tic_tac_toe.computer_move(P_MV_3, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
+        print("Доска после хода компьютера:")
+        tic_tac_toe.display_board(newboard)
+#-------------------------------Tests random moves-----------------------------------------------------------------
+    if TEST_computer_move_random_moves == 1:
+        print("Тест функции tic_tac_toe.computer_move на доске RND_MV_1")
+        tic_tac_toe.display_board(RND_MV_1)
+        newboard = tic_tac_toe.computer_move(RND_MV_1, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
+        print("Доска после хода компьютера:")
+        tic_tac_toe.display_board(newboard)
+
+        print("Тест функции tic_tac_toe.computer_move на доске RND_MV_2")
+        tic_tac_toe.display_board(RND_MV_2)
+        newboard = tic_tac_toe.computer_move(RND_MV_2, tic_tac_toe.CROSS, tic_tac_toe.ZERO)
         print("Доска после хода компьютера:")
         tic_tac_toe.display_board(newboard)
 input("/n/n Нажмите Enter, чтобы выйти!")
