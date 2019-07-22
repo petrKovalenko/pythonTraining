@@ -115,7 +115,7 @@ def legal_moves(board):
            availableMoves.append(i)
     return availableMoves
 
-#определяет победителя, и возвращает фишук победителя
+#определяет победителя, и возвращает фишку победителя
 #если ничья - возвращает TIE
 #если не все клетки заполнены - возвращает None
 def winner(board):
@@ -176,8 +176,12 @@ def winner(board):
 def human_move(board, human):
     #выводит памятку
     short_instructions()
+    print("текущая доска:")
+    display_board(board)
     while True:
     #спрашивает у игрока номер, куда походить
+        print("Возможные клетки для хода:")
+        print(legal_moves(board))
         human_input = ask_number("Введите число, которое соответсвует клетке, куда вы хотите пойти.", 0, NUM_SQUARES - 1)
         #если игрок выбрал не занятую клетку, возвращаем обновлённую доску, иначе - спрашиваем опять
         if board[human_input] == EMPTY:
@@ -441,5 +445,38 @@ def next_turn(turn):
     assert false, "Произошла ошибка в логике программы, функция next_turn, на вход подан неопределённый символ '"+str(turn)+"'!"
 
 #поздарвляет победителя
-def congrat_winner():
+def congrat_winner(the_winner, computer, human):
+    if the_winner == computer:
+        print("К сожалению, компьютер оказался сильнее(: Попробуйте ещё разок?")
+        return
+    if the_winner == human:
+        print("Поздравляем! Вы выиграли!")
+        return
+    if the_winner == TIE:
+        print("Ничья! Ещё разок?")
+        return
+    assert false, "Произошла ошибка в логике программы, функция congrat_winner, на вход подан неопределённый символ '"+str(the_winner)+"'!"
     
+#main - соновная логика игры
+board = new_board()
+turn = CROSS
+instructions()
+human,computer = first_turn()
+print("Вы ходите: " + human)
+winnerType = None
+while winnerType is None:
+    if turn == computer:
+        board = computer_move(board, computer, human)
+    else:
+        board = human_move(board, human)
+    
+    #display_baord()
+    turn = next_turn(turn)
+    winnerType = winner(board)
+print("Финальная доска:")
+display_board(board)
+congrat_winner(winnerType, computer, human)
+
+input("\n\nНажми пробел, чтобы выйти")
+
+
