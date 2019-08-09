@@ -41,3 +41,15 @@ print(pickle.load(file_r))
 print(pickle.load(file_text_r))
 print(pickle.load(file_r))
 print(pickle.load(file_text_r))
+
+#shelve
+print("\nПомещение списков на полку.")
+s = shelve.open("pickles2.dat")
+s['Moscow'] = ("red square", 'mausoleum', 'MSU')
+s['StPetersburg'] = ["Nevsky", "Kronshtadt"]
+s.sync()
+s.close()
+
+s = shelve.open("pickles2.dat", 'r')
+print(s['StPetersburg'])
+s.close()
