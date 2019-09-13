@@ -1,7 +1,7 @@
 #chapter 8 - classes
 #class
 class Hotel(object):
-    ""виртуальный отель""
+    """виртуальный отель"""
     #Звёздность отеля - статический параметр, задающий условия игры
     hotels_conditions = {
         1 : {'room_fee' : 2, 'room_wage' : 1, 'additional_room_cost': 7},
@@ -28,17 +28,21 @@ class Hotel(object):
     @stars.setter
     def stars(self, new_stars):
         if new_stars < self.__stars:
-            print("")
-        else if new_stars > self.__stars:
+            print("Can not downgrade hotel from " + self.__stars + " stars to " + new_stars + " stars")
+        elif new_stars > self.__stars:
             needed_money = __calculate_star_money(new_stars)
-            if needed_money <= money_amount:
-                print("")
+            if needed_money <= Hotel.money_amount:
+                print("You have only " + Hotel.money_amount + " of money. To do upgrade you need " + needed_money + " of money!")
             else:
-                
+               Hotel.money_amount -= needed_money
+               self.stars = new_stars
             
     def __calculate_star_money(self, new_stars):
-        
-    def 
+        money_needed = 0
+        if self.__stars < new_stars - 1: #if upgrading more than 1 star up
+           money_needed =  __calculate_star_money(self, new_stars - 1)
+        return money_needed + Hotel.hotels_conditions[new_stars]['init_upgrade'] + self.rooms * Hotel.hotels_conditions[new_stars]['upgrade_per_room']
+    #def 
     def __str__(self):
         print("Отель '" + name + "'")
         print(" :" + rooms)
