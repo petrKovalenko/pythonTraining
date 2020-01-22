@@ -12,6 +12,7 @@ class Application(Frame):
         super(Application, self).__init__(window)
         self.grid()
         self.create_scenery()
+        self.listButtonPushed = False
 
     def create_scenery(self):
         self.label = Label(self, text="Я милый и пушистый.")
@@ -23,6 +24,13 @@ class Application(Frame):
         self.btn2.grid(row = 1, column = 2, sticky = E)
         self.txt1 = Text(self, width = 40, heigh = 10, wrap = WORD)
         self.txt1.grid(row = 2, column = 0, columnspan = 4, rowspan = 4)
+        #переключатель
+        #переменная, которая будет связана с переключателем
+        self.listLike = BooleanVar()
+        self.listLike.set(1)
+        #создание переключателя (не присваиваем его переменной класса)
+        Checkbutton(self, text = "Отображать как список", variable = self.listLike, command = self.updateTxt).grid(row = 7, column = 1)
+        
 
     def labelChange(self):
         rnd_num = random.randint(0, len(Application.label_prhases) - 1)
@@ -30,8 +38,18 @@ class Application(Frame):
         self.label["text"] =  Application.label_prhases[rnd_num]
 
     def showVList(self):
+        self.listButtonPushed = True
         self.txt1.delete(0.0, END)
-        self.txt1.insert(0.0, str(Application.label_prhases))
+        #if representation should be like list
+        if self.listLike.get():
+            self.txt1.insert(0.0, str(Application.label_prhases))
+        else:
+            for phrase in Application.label_prhases:
+               self.txt1.insert(END, " '" + phrase + "'") 
+
+    def updateTxt(self):
+        if self.listButtonPushed:
+            self.showVList()
         
 
 root_window = Tk()
