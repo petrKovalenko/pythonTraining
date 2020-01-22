@@ -30,7 +30,26 @@ class Application(Frame):
         self.listLike.set(1)
         #создание переключателя (не присваиваем его переменной класса)
         Checkbutton(self, text = "Отображать как список", variable = self.listLike, command = self.updateTxt).grid(row = 7, column = 1)
-        
+        #Radiobutton
+        #variable to collect radiobutton values
+        self.theme = StringVar()
+        self.theme.set("main")
+        #several radiobuttons
+        Radiobutton(self,
+                    text = "Основная тема",
+                    variable = self.theme,
+                    value = "main",
+                    command = self.updateTheme).grid(row = 8, column = 0)
+        Radiobutton(self,
+                    text = "Зелёная тема",
+                    value = "green",
+                    variable = self.theme,
+                    command = self.updateTheme).grid(row = 8, column = 1)
+        Radiobutton(self,
+                    text = "Красная тема",
+                    value = "red",
+                    variable = self.theme,
+                    command = self.updateTheme).grid(row = 9, column = 0)
 
     def labelChange(self):
         rnd_num = random.randint(0, len(Application.label_prhases) - 1)
@@ -50,7 +69,18 @@ class Application(Frame):
     def updateTxt(self):
         if self.listButtonPushed:
             self.showVList()
-        
+
+    def updateTheme(self):
+        val = self.theme.get()
+        if val == "main":
+            self.txt1["bg"] = "white"
+            self.txt1.configure(fg = "black")
+        if val == "green":
+            self.txt1["bg"] = "yellow"
+            self.txt1.configure(fg = "green")
+        if val == "red":
+            self.txt1["bg"] = "black"
+            self.txt1.configure(fg = "red")
 
 root_window = Tk()
 root_window.title("Окошко в колпаке:)")
