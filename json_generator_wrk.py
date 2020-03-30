@@ -1,5 +1,6 @@
 #json generator
 #generates sample json for uploading in Vertica
+import sys
 import random
 import json
 import datetime
@@ -8,14 +9,14 @@ TIME_OFFSET_MAX_SEC = 10000
 RECORD_CLASSES = ("ABC", "XYZ", "LYC", "MSK")
 
 def generateRecord():
-    nowTime = datetime.datetime.now()
+    nowTime = datetime.datetime.now().timestamp() 
     timeOffset = random.randint(-TIME_OFFSET_MAX_SEC, TIME_OFFSET_MAX_SEC)
     randTime = datetime.datetime.fromtimestamp(nowTime + timeOffset)
     randClass = random.choice(RECORD_CLASSES)
     randInt = timeOffset
     return {"time_key": str(randTime), "class_key": randClass, "int_key": randInt}
     
-if len(sys.argv < 3):
+if len(sys.argv) < 3:
     print("На вход подаётся 2 аргумента - имя файла и количество строк!")
 else:
     file = open(sys.argv[1], 'w', encoding='UTF8')
@@ -26,5 +27,5 @@ else:
         data = []
         for i in range(1, linesNumber):
             data.append(generateRecord())
-        json.dump(data, file, ident=2)
+        json.dump(data, file, indent=2)
         file.close()
