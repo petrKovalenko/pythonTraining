@@ -16,7 +16,60 @@ RECORD_MODEL = {
     "time_key": "DATETIME",
     "class_key":"CLASS",
     "int_key":"INT",
-    "str_key1":"STR"
+    "str_key1":"STR",
+    "str_key2":"STR",
+    "str_key3":"STR",
+    "str_key4":"STR",
+    "str_key5":"STR",
+    "str_key6":"STR",
+    "int_key2":"INT",
+    "int_key3":"INT",
+    "int_key4":"INT",
+    "int_key5":"INT",
+    "int_key6":"INT",
+    "time_key2": "DATETIME",
+    "time_key3": "DATETIME",
+    "time_key4": "DATETIME",
+    "time_key5": "DATETIME",
+    "time_key6": "DATETIME",
+    "again_time_key": "DATETIME",
+    "again_class_key":"CLASS",
+    "again_int_key":"INT",
+    "again_str_key1":"STR",
+    "again_str_key2":"STR",
+    "again_str_key3":"STR",
+    "again_str_key4":"STR",
+    "again_str_key5":"STR",
+    "again_str_key6":"STR",
+    "again_int_key2":"INT",
+    "again_int_key3":"INT",
+    "again_int_key4":"INT",
+    "again_int_key5":"INT",
+    "again_int_key6":"INT",
+    "again_time_key2": "DATETIME",
+    "again_time_key3": "DATETIME",
+    "again_time_key4": "DATETIME",
+    "again_time_key5": "DATETIME",
+    "again_time_key6": "DATETIME",
+    "and_again_time_key": "DATETIME",
+    "and_again_class_key":"CLASS",
+    "and_again_int_key":"INT",
+    "and_again_str_key1":"STR",
+    "and_again_str_key2":"STR",
+    "and_again_str_key3":"STR",
+    "and_again_str_key4":"STR",
+    "and_again_str_key5":"STR",
+    "and_again_str_key6":"STR",
+    "and_again_int_key2":"INT",
+    "and_again_int_key3":"INT",
+    "and_again_int_key4":"INT",
+    "and_again_int_key5":"INT",
+    "and_again_int_key6":"INT",
+    "and_again_time_key2": "DATETIME",
+    "and_again_time_key3": "DATETIME",
+    "and_again_time_key4": "DATETIME",
+    "and_again_time_key5": "DATETIME",
+    "and_again_time_key6": "DATETIME"
     }
 STR_LEN_MIN = 3
 STR_LEN_MAX = 40
@@ -46,15 +99,15 @@ def generateRecord():
     curRecord = copy.deepcopy(RECORD_MODEL)
     for key in curRecord.keys():
         if curRecord[key] == "DATETIME":
-           curRecord[key] = generateDatetime();
+           curRecord[key] = str(generateDatetime());
            continue;
-        if сurRecord[key] == "CLASS":
+        if curRecord[key] == "CLASS":
             curRecord[key] = generateClass();
             continue;
-        if сurRecord[key] == "INT":
+        if curRecord[key] == "INT":
             curRecord[key] = generateInt();
             continue;
-        if сurRecord[key] == "STR":
+        if curRecord[key] == "STR":
             curRecord[key] = generateString();
             continue;
         #if nothing mathced, place UNKNOWN_TYPE
